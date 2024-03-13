@@ -10,7 +10,7 @@ const usuarioController=require('../controllers/usuarioController');
 // const { crearUsuario } = require("../controllers/usuarioController");
 
 router.post('/singUp',usuarioController.crearUsuario);
-router.post('/singIn',usuarioController.Login);
+router.post('/login',usuarioController.Login);
 router.get('/',usuarioController.obtenerUsuarios);
 router.get('/:id',usuarioController.obtenerUsuarioById)
 module.exports=router;
