@@ -52,10 +52,10 @@ exports.crearUsuario = async (req, res) => {
       nombre: nombre,
       correo: correo,
       telefono: telefono,
-      password: hashedPassword
+      password: hashedPassword,
     });
     const resultado = await usuario.save();
-    const { _id } = await resultado.toJSON();
+    const { _id } = await resultado.toJSON()
     const token = jwt.sign({ _id: _id }, "secret");
     res.cookie("jwt", token, {
       httpOnly: true,

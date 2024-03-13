@@ -48,14 +48,24 @@ exports.crearUsuario = async (req, res) => {
     if (record) {
       return res.status(400).send({ message: "El correo ya está registrado" });
     }
+
     const usuario = new Usuario({
       nombre: nombre,
       correo: correo,
       telefono: telefono,
-      password: hashedPassword
+      password: hashedPassword,
     });
+
+
+
+
     const resultado = await usuario.save();
+
     const { _id } = await resultado.toJSON();
+
+
+
+
     const token = jwt.sign({ _id: _id }, "secret");
     res.cookie("jwt", token, {
       httpOnly: true,

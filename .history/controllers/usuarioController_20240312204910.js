@@ -43,19 +43,34 @@ exports.crearUsuario = async (req, res) => {
     let telefono = req.body.telefono;
     let correo = req.body.correo;
     const salt = await bcrypt.genSalt(10);
+
+
     const hashedPassword = await bcrypt.hash(password, salt);
+    //
+
     const record = await Usuario.findOne({ correo: correo });
+
     if (record) {
       return res.status(400).send({ message: "El correo ya está registrado" });
     }
+
     const usuario = new Usuario({
       nombre: nombre,
       correo: correo,
       telefono: telefono,
-      password: hashedPassword
+      password: hashedPassword,
     });
+
+
+
+
     const resultado = await usuario.save();
+
     const { _id } = await resultado.toJSON();
+
+
+
+
     const token = jwt.sign({ _id: _id }, "secret");
     res.cookie("jwt", token, {
       httpOnly: true,

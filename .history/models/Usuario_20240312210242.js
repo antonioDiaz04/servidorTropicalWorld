@@ -19,9 +19,7 @@ const UsuarioSchema=mongoose.Schema({
         unique:true,
         required:true
     },
-rol:{
-     type: String, required: true, default: 'cliente' 
-}
+rol
 })
 
 
