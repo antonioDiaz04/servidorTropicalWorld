@@ -15,6 +15,9 @@ exports.Login = async (req, res) => {
     if (!isPasswordValid) return res.status(401).send("Contraseña incorrecta");
 
     const token = jwt.sign({ _id: usuario._id }, "secret");
+
+  
+
     return res.status(200).json({ token });
     console.log("toke =>",token)
   } catch (error) {

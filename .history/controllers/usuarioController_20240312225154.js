@@ -3,26 +3,7 @@ const { param } = require("../routes/usuario");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
-exports.Login = async (req, res) => {
-  try {
-    const { correo, password } = req.body;
-
-    const usuario = await Usuario.findOne({ correo });
-
-    if (!usuario) return res.status(401).send("El correo no existe");
-
-    const isPasswordValid = await bcrypt.compare(password, usuario.password);
-    if (!isPasswordValid) return res.status(401).send("Contraseña incorrecta");
-
-    const token = jwt.sign({ _id: usuario._id }, "secret");
-    return res.status(200).json({ token });
-    console.log("toke =>",token)
-  } catch (error) {
-    console.log(error);
-    return res.status(500).send("Error en el servidor: " + error);
-  }
-};
-
+exports
 
 
 
@@ -59,7 +40,7 @@ exports.EstadoUsuario = async (req, res) => {
 exports.crearUsuario = async (req, res) => {
   try {
     console.log("req.body:", req.body); // Agrega este registro
-    let password = req.body.password;
+    let password = req.body.pass;
     console.log("password=>:", password); // Agrega este registro
     // let password = req.body.password;
     let nombre = req.body.nombre;
@@ -80,7 +61,7 @@ exports.crearUsuario = async (req, res) => {
     });
     const resultado = await usuario.save();
     const { _id } = await resultado.toJSON();
-    const token = jwt.sign({ _id: _id }, "secret");
+    const token = jwt.sign({ _id: _id }, "secretKey");
     res.cookie("jwt", token, {
       httpOnly: true,
       maxAge: 24 * 60 * 60 * 1000, //1 day
@@ -98,9 +79,9 @@ exports.crearUsuario = async (req, res) => {
   }
 };
 
-// exports.login = async (req, res) => {
-//   res.status(200).send("usuario logeado");
-// };
+exports.login = async (req, res) => {
+  res.status(200).send("usuario logeado");
+};
 
 exports.obtenerUsuarioById = async (req, res) => {
   try {

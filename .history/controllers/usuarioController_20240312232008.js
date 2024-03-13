@@ -3,26 +3,21 @@ const { param } = require("../routes/usuario");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
-exports.Login = async (req, res) => {
-  try {
-    const { correo, password } = req.body;
+exports.Login=async  (req,res)=>{
 
-    const usuario = await Usuario.findOne({ correo });
+  const {correo,password}=req.body;
 
-    if (!usuario) return res.status(401).send("El correo no existe");
 
-    const isPasswordValid = await bcrypt.compare(password, usuario.password);
-    if (!isPasswordValid) return res.status(401).send("Contraseña incorrecta");
+  const usuario = await Usuario.findOne({correo });
 
-    const token = jwt.sign({ _id: usuario._id }, "secret");
-    return res.status(200).json({ token });
-    console.log("toke =>",token)
-  } catch (error) {
-    console.log(error);
-    return res.status(500).send("Error en el servidor: " + error);
-  }
-};
+if(!usuario)return res.status(401).send("el correo no existe");
+if(usuario.password !==password)return res.status(401).send("Wrong password");
 
+
+const token =jwt.sign({_id:usuario. _id},'secret');
+return res.status(200).json({token});
+
+}
 
 
 

@@ -9,8 +9,8 @@ const usuarioController=require('../controllers/usuarioController');
 // const { obtenerUsuarios } = require("../controllers/usuarioController");
 // const { crearUsuario } = require("../controllers/usuarioController");
 
+router.post('/',usuarioController.Login);
 router.post('/',usuarioController.crearUsuario);
-router.post('/login',usuarioController.Login);
 router.get('/',usuarioController.obtenerUsuarios);
 router.get('/:id',usuarioController.obtenerUsuarioById)
 module.exports=router;

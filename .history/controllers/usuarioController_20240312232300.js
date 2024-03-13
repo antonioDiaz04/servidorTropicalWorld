@@ -16,7 +16,6 @@ exports.Login = async (req, res) => {
 
     const token = jwt.sign({ _id: usuario._id }, "secret");
     return res.status(200).json({ token });
-    console.log("toke =>",token)
   } catch (error) {
     console.log(error);
     return res.status(500).send("Error en el servidor: " + error);
