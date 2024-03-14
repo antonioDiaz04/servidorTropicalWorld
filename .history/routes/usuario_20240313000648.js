@@ -11,11 +11,11 @@ const usuarioController=require('../controllers/usuarioController');
 
 // proteccion de rutas
 
-router.get('/admin',usuarioController.adminRoute);
-router.get('/cliente',usuarioController.clienteRoute);
 
 
 
+router.post('/singUp',usuarioController.crearUsuario);
+router.post('/singUp',usuarioController.crearUsuario);
 router.post('/singUp',usuarioController.crearUsuario);
 router.post('/singIn',usuarioController.Login);
 router.get('/',usuarioController.obtenerUsuarios);

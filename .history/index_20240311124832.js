@@ -14,7 +14,7 @@ const corsOptions = {
 app.use(cookieParser());
 app.use(cors(corsOptions));
 app.use(express.json());
-app.use('/comentarios',require('./routes/comentario'))
+
 app.use('/productos', require('./routes/producto'));
 app.use('/usuarios',require('./routes/usuario'));
 app.listen(4000, () => {

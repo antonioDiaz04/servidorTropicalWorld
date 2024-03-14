@@ -9,10 +9,6 @@ const usuarioController=require('../controllers/usuarioController');
 // const { obtenerUsuarios } = require("../controllers/usuarioController");
 // const { crearUsuario } = require("../controllers/usuarioController");
 
-// proteccion de rutas
-
-router.get('/admin',usuarioController.adminRoute);
-router.get('/cliente',usuarioController.clienteRoute);
 
 
 

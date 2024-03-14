@@ -22,7 +22,7 @@ exports.Login = async (req, res) => {
 
     // Si el usuario tiene un rol, firmar el token JWT con el rol incluido
     const token = jwt.sign({ _id: usuario._id, rol: usuario.rol }, "secret");
-    return res.status(200).json({ token ,rol: usuario.rol});
+    return res.status(200).json({ token });
   } catch (error) {
     console.log(error);
     return res.status(500).send("Error en el servidor: " + error);

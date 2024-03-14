@@ -5,13 +5,13 @@ const express=require('express');
 const router=express.Router();
 const bcrypt=require('bcryptjs');
 const jw=require('jsonwebtoken');
-const usuarioController=require('../controllers/usuarioController');
+const comentarioController=require('../controllers/comentarioController');
 // const { obtenerUsuarios } = require("../controllers/usuarioController");
 // const { crearUsuario } = require("../controllers/usuarioController");
 
 // proteccion de rutas
 
-router.get('/admin',usuarioController.adminRoute);
+router.get('/admin',comentarioController.adminRoute);
 router.get('/cliente',usuarioController.clienteRoute);
 
 
