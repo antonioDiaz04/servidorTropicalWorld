@@ -28,7 +28,6 @@ const UsuarioSchema = mongoose.Schema({
   },
   respuesta: {
     type: String,
-    required:false,
     
     
     

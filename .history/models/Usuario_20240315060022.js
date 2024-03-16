@@ -11,7 +11,7 @@ const UsuarioSchema = mongoose.Schema({
   },
   confirmpass: {
     type: String,
-    // required: true,
+    required: true,
   },
   telefono: {
     type: String,
@@ -24,14 +24,12 @@ const UsuarioSchema = mongoose.Schema({
 },
   pregunta: {
     type: String,
-    required:false,
+    required: true,
   },
   respuesta: {
     type: String,
-    required:false,
     
-    
-    
+    required: true,
   },
   rol: {
     type: String,

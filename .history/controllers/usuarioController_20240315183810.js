@@ -66,8 +66,6 @@ exports.verifyTokenAndRole = (role) => (req, res, next) => {
   next();
 };
 
-
-
 // Ruta protegida para administradores
 exports.adminRoute = exports.verifyTokenAndRole('administrador');
 // Ruta protegida para clientes
@@ -116,8 +114,6 @@ exports.crearUsuario = async (req, res) => {
     console.log("nombre=> :", nombre); // Agrega este registro
     let telefono = req.body.telefono;
     let correo = req.body.correo;
-    let pregunta=req.body.pregunta;
-    let respuesta=req.body.respuesta;
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
     const record = await Usuario.findOne({ correo: correo });
@@ -128,8 +124,6 @@ exports.crearUsuario = async (req, res) => {
       nombre: nombre,
       correo: correo,
       telefono: telefono,
-pregunta:pregunta,
-respuesta: respuesta,
       password: hashedPassword
     });
     const resultado = await usuario.save();
@@ -144,6 +138,7 @@ respuesta: respuesta,
       usuario: resultado._id,
       message: "exitoso",
     });
+
     console.log(resultado);
   } catch (error) {
     console.log(error);

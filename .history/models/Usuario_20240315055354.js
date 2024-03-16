@@ -9,10 +9,6 @@ const UsuarioSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  confirmpass: {
-    type: String,
-    // required: true,
-  },
   telefono: {
     type: String,
     required: true,
@@ -24,14 +20,12 @@ const UsuarioSchema = mongoose.Schema({
 },
   pregunta: {
     type: String,
-    required:false,
+    required: true,
   },
   respuesta: {
     type: String,
-    required:false,
     
-    
-    
+    required: true,
   },
   rol: {
     type: String,

@@ -24,12 +24,10 @@ const UsuarioSchema = mongoose.Schema({
 },
   pregunta: {
     type: String,
-    required:false,
+    // required: true,
   },
   respuesta: {
     type: String,
-    required:false,
-    
     
     
   },

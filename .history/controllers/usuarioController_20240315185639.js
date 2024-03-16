@@ -128,8 +128,7 @@ exports.crearUsuario = async (req, res) => {
       nombre: nombre,
       correo: correo,
       telefono: telefono,
-pregunta:pregunta,
-respuesta: respuesta,
+prefun
       password: hashedPassword
     });
     const resultado = await usuario.save();
