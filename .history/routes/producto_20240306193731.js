@@ -8,9 +8,9 @@ router.post('/', productoController.crearProducto);
 router.get('/', productoController.obtenerProductos);
 router.get('/:id', productoController.obtenerDetalleProductoById);
 //=================IMAGEN===========
-// router.route('/photos')
-// .get(productoController.obtenerProductos)
-// .post(productoController.crearProducto);
+router.route('/photos')
+.get(productoController.obtenerProductos)
+.post(productoController.crearProducto);
 // router.route('/photos/:id')
 // .get(getPhotos)
 // .post(deletePhoto)
