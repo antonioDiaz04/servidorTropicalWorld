@@ -16,6 +16,7 @@ router.get('/cliente',usuarioController.clienteRoute);
 
 
 
+
 router.post('/singUp',usuarioController.crearUsuario);
 router.post('/singIn',usuarioController.Login);
 router.get('/',usuarioController.obtenerUsuarios);
