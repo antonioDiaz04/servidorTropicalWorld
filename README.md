@@ -22,11 +22,12 @@ Este repositorio contiene el código fuente del servidor Tropical World.
 modificar para realizar pruebas con tu direccion ip 
 =>   *url = "http://servidortropicalworld-1.onrender.com/dispositivos/estadoLed/led"; /
 
-##consultar tu ip de red en el cmd
+## consultar tu ip de red en el cmd
 ejecuta :
 👉:ipconfig /all
 👉busca...
-![imagen](https://github.com/NTO-H/servidorTropicalWorld/assets/134122438/bee0a106-6f65-4709-81b1-a6598d6e78f1)
+
+![imagen](https://github.com/NTO-H/servidorTropicalWorld/assets/134122438/f90bdb93-1034-4abb-8d0f-5f04984439b3)
 
 
 
@@ -36,10 +37,10 @@ ejemplo con ip :http://192.168.0.107:4000/dispositivos/estadoLed/led
 
 
 
-##/---------------------------------------------------------
+## /---------------------------------------------------------
 
-##/--------------En--Esp32-------------------
-##/---------------------------------------------------------
+## /--------------En--Esp32-------------------
+## /---------------------------------------------------------
 ```cpp
 
 #include <WiFi.h>
