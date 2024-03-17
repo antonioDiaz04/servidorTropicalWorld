@@ -7,7 +7,6 @@ Este repositorio contiene el código fuente del servidor Tropical World.
 👉 Clona este repositorio utilizando el siguiente comando:
 
 
-
 👉1-git clone https://github.com/NTO-H/servidorTropicalWorld.git
 
 👉2-cd servidorTropicalWorld
@@ -23,11 +22,22 @@ Este repositorio contiene el código fuente del servidor Tropical World.
 modificar para realizar pruebas con tu direccion ip 
 =>   *url = "http://servidortropicalworld-1.onrender.com/dispositivos/estadoLed/led"; /
 
+##consultar tu ip de red en el cmd
+ejecuta :
+👉:ipconfig /all
+👉busca...
+![imagen](https://github.com/NTO-H/servidorTropicalWorld/assets/134122438/bee0a106-6f65-4709-81b1-a6598d6e78f1)
+
+
+
 ejemplo :http://localhost:4000/dispositivos/estadoLed/led
+
+ejemplo con ip :http://192.168.0.107:4000/dispositivos/estadoLed/led
 
 
 
 ##/---------------------------------------------------------
+
 ##/--------------En--Esp32-------------------
 ##/---------------------------------------------------------
 ```cpp
