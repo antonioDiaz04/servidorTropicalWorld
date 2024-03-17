@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const DispositivoSchema = mongoose.Schema({
 
-  led: {
+  leds: {
     type:Number,
     required: true,
   },

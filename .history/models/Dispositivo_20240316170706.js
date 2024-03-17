@@ -1,8 +1,10 @@
 const mongoose = require("mongoose");
-const DispositivoSchema = mongoose.Schema({
+const Dispositivo = mongoose.Schema({
+  
 
-  led: {
-    type:Number,
+  
+  leds: {
+    type: String,
     required: true,
   },
   fechaCreacion: {
@@ -12,4 +14,4 @@ const DispositivoSchema = mongoose.Schema({
 });
 
 // mongoose.exports = mongoose.model('Producto', ProductoSchema);
-module.exports = mongoose.model('Dispositivo', DispositivoSchema);
+module.exports = mongoose.model('Usuario', UsuarioSchema);

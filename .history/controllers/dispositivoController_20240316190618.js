@@ -52,8 +52,7 @@ exports.guardaDatos = async (req, res) => {
 
 // app.use(bodyParser.json());
 
-// Endpoint para obtener el estad
-exports.estadoled = async (req, res) => {
+// Endpoint para obtener el estadexports.estadoled = async (req, res) => {
     try {
         // Consultar el estado actual del LED en la base de datos
         const dispositivo = await Dispositivo.findOne().sort({ fechaCreacion: -1 });

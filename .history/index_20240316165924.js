@@ -17,7 +17,6 @@ app.use(express.json());
 app.use('/comentarios',require('./routes/comentario'))
 app.use('/productos', require('./routes/producto'));
 app.use('/usuarios',require('./routes/usuario'));
-app.use('/dispositivos',require('./routes/dispositivo'));
 
 app.listen(4000, () => {
     console.log("el servidor esta corriendo perfectamente en el puerto 4000 ");

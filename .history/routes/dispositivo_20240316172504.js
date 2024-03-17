@@ -3,8 +3,7 @@ const express = require("express");
 const router = express.Router();
 const dispositivoController = require('../controllers/dispositivoController');
 //api/producto
-router.get('/estadoLed/led',dispositivoController.estadoled)
-router.post('/guardarDatos', dispositivoController.guardaDatos);
+router.post('/guardarDatos', dispositivoController.g);
 router.get('/', dispositivoController.obtenerDispositivos);
 // router.get('/:id', dispositivoController.obtenerDetalleDispositivoById);
 //=================IMAGEN===========

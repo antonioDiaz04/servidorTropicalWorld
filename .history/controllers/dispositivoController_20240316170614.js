@@ -1,5 +1,5 @@
 const Dispositivo = require("../models/Dispositivo");
-const { param } = require("../routes/dispositivo");
+const { param } = require("../routes/producto");
 
 exports.guardaDatos = async (req, res) => {
   try{
@@ -23,50 +23,6 @@ exports.guardaDatos = async (req, res) => {
 };
 
 
-
-
-
-// const express = require('express');
-// const app = express();
-// const bodyParser = require('body-parser');
-// const mongoose = require('mongoose');
-
-// Conexión a la base de datos MongoDB
-// mongoose.connect('mongodb://localhost:27017/tu_base_de_datos', { useNewUrlParser: true, useUnifiedTopology: true });
-// const db = mongoose.connection;
-
-// db.on('error', console.error.bind(console, 'Error de conexión a la base de datos:'));
-// db.once('open', () => {
-//     console.log('Conexión exitosa a la base de datos');
-// });
-
-// Definir el esquema del modelo Dispositivo
-// const dispositivoSchema = new mongoose.Schema({
-//     leds: {
-//         type: Number,
-//         required: true
-//     }
-// });
-
-// const Dispositivo = mongoose.model('Dispositivo', dispositivoSchema);
-
-// app.use(bodyParser.json());
-
-// Endpoint para obtener el estad
-exports.estadoled = async (req, res) => {
-    try {
-        // Consultar el estado actual del LED en la base de datos
-        const dispositivo = await Dispositivo.findOne().sort({ fechaCreacion: -1 });
-
-        // Devolver solo el estado del LED como respuesta
-        res.send(dispositivo.led.toString());
-    } catch (error) {
-        console.error('Error al obtener el estado del LED:', error);
-        res.status(500).send('Error al obtener el estado del LED');
-    }
-};
-
-
         
 // exports.obtenerDetalleProductoById = async (req, res) => {
 //   try {
@@ -84,7 +40,7 @@ exports.estadoled = async (req, res) => {
 
 
 
-exports.obtenerDispositivos = async (req, res) => {
+exports.obtenerDispotivos = async (req, res) => {
   try {
     const dispositivos = await Dispositivo.find();
     res.json(dispositivos);
@@ -125,20 +81,20 @@ exports.obtenerDispositivos = async (req, res) => {
 //   }
 // }
 
-// exports.eliminarProducto = async (req, res) => {
-//   try {
-//     let producto = await Producto.findById(req.params.id);
+exports.eliminarProducto = async (req, res) => {
+  try {
+    let producto = await Producto.findById(req.params.id);
 
-//     if (!producto) {
-//       res.status(404).json({ msg: 'No existe el producto' });
-//     }
+    if (!producto) {
+      res.status(404).json({ msg: 'No existe el producto' });
+    }
     
-//     await Producto.findOneAndDelete({ _id: req.params.id });
-//     res.json({ msg: 'Producto eliminado con exito' });
+    await Producto.findOneAndDelete({ _id: req.params.id });
+    res.json({ msg: 'Producto eliminado con exito' });
     
-//   } catch (error) {
-//     console.log(error);
-//     res.status(500).send('ocurrio un error');
-//   }
-// }
+  } catch (error) {
+    console.log(error);
+    res.status(500).send('ocurrio un error');
+  }
+}
 

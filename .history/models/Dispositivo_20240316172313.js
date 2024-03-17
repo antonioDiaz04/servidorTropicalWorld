@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 const DispositivoSchema = mongoose.Schema({
 
-  led: {
-    type:Number,
+  leds: {
+    type: Nu,
     required: true,
   },
   fechaCreacion: {

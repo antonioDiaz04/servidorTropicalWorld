@@ -26,45 +26,45 @@ exports.guardaDatos = async (req, res) => {
 
 
 
-// const express = require('express');
-// const app = express();
-// const bodyParser = require('body-parser');
-// const mongoose = require('mongoose');
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 // Conexión a la base de datos MongoDB
-// mongoose.connect('mongodb://localhost:27017/tu_base_de_datos', { useNewUrlParser: true, useUnifiedTopology: true });
-// const db = mongoose.connection;
+mongoose.connect('mongodb://localhost:27017/tu_base_de_datos', { useNewUrlParser: true, useUnifiedTopology: true });
+const db = mongoose.connection;
 
-// db.on('error', console.error.bind(console, 'Error de conexión a la base de datos:'));
-// db.once('open', () => {
-//     console.log('Conexión exitosa a la base de datos');
-// });
+db.on('error', console.error.bind(console, 'Error de conexión a la base de datos:'));
+db.once('open', () => {
+    console.log('Conexión exitosa a la base de datos');
+});
 
 // Definir el esquema del modelo Dispositivo
-// const dispositivoSchema = new mongoose.Schema({
-//     leds: {
-//         type: Number,
-//         required: true
-//     }
-// });
+const dispositivoSchema = new mongoose.Schema({
+    leds: {
+        type: Number,
+        required: true
+    }
+});
 
 // const Dispositivo = mongoose.model('Dispositivo', dispositivoSchema);
 
 // app.use(bodyParser.json());
 
-// Endpoint para obtener el estad
-exports.estadoled = async (req, res) => {
+// Endpoint para obtener el estado actual del LED
+app.get('/dispositivos/estadoLed', async (req, res) => {
     try {
         // Consultar el estado actual del LED en la base de datos
         const dispositivo = await Dispositivo.findOne().sort({ fechaCreacion: -1 });
 
-        // Devolver solo el estado del LED como respuesta
-        res.send(dispositivo.led.toString());
+        // Devolver el estado del LED como respuesta
+        res.json({ estadoLed: dispositivo.leds });
     } catch (error) {
         console.error('Error al obtener el estado del LED:', error);
-        res.status(500).send('Error al obtener el estado del LED');
+        res.status(500).json({ error: 'Error al obtener el estado del LED' });
     }
-};
+});
 
 
         

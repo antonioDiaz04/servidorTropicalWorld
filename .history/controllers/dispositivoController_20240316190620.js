@@ -53,17 +53,20 @@ exports.guardaDatos = async (req, res) => {
 // app.use(bodyParser.json());
 
 // Endpoint para obtener el estad
-exports.estadoled = async (req, res) => {
-    try {
-        // Consultar el estado actual del LED en la base de datos
-        const dispositivo = await Dispositivo.findOne().sort({ fechaCreacion: -1 });
-
-        // Devolver solo el estado del LED como respuesta
-        res.send(dispositivo.led.toString());
-    } catch (error) {
-        console.error('Error al obtener el estado del LED:', error);
-        res.status(500).send('Error al obtener el estado del LED');
-    }
+exports.estadoled= async (req, res) => {
+    exports.estadoled = async (req, res) => {
+        try {
+            // Consultar el estado actual del LED en la base de datos
+            const dispositivo = await Dispositivo.findOne().sort({ fechaCreacion: -1 });
+    
+            // Devolver solo el estado del LED como respuesta
+            res.send(dispositivo.led.toString());
+        } catch (error) {
+            console.error('Error al obtener el estado del LED:', error);
+            res.status(500).send('Error al obtener el estado del LED');
+        }
+    };
+    
 };
 
 
