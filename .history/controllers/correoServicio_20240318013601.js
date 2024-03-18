@@ -25,7 +25,6 @@ exports.enviarCorreoycuerpo= async(req, res) => {
     console.log(result); // Información sobre la operación de actualización
   })
     console.log("correo obtenido=>"+correo)
-    console.log("token obtenido=>"+token)
     // Lógica para enviar el correo electrónico con el token de verificación
     enviarCorreo(correo);
   

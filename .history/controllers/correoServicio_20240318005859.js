@@ -18,14 +18,7 @@ exports.enviarCorreoycuerpo= async(req, res) => {
     const correo =await req.body.correo; // Extraer el correo electrónico del cuerpo de la solicitud
     // const token = crypto.randomBytes(3).toString('hex').toUpperCase();
 
-
-    Usuario.updateOne({ correo: correo }, { $set: { token: token } })
-  .then(result => {
-    console.log(`Se actualizó el token para el usuario con correo ${correo}`);
-    console.log(result); // Información sobre la operación de actualización
-  })
     console.log("correo obtenido=>"+correo)
-    console.log("token obtenido=>"+token)
     // Lógica para enviar el correo electrónico con el token de verificación
     enviarCorreo(correo);
   
