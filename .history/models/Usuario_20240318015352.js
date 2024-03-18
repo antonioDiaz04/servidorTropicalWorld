@@ -22,10 +22,10 @@ const UsuarioSchema = mongoose.Schema({
     unique:true,
     required:true
 },
-
-  token: {
-    type:String
-},
+{
+  token
+}
+,
   pregunta: {
     type: String,
     required:false,

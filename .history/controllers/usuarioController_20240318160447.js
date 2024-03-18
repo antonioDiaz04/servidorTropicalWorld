@@ -212,29 +212,23 @@ exports.obtenerUsuarios = async (req, res) => {
 };
 
 
+
+
 exports.actualizarPassword = async (req, res) => {
   try {
-    let correo = req.body.correo;
-    let token = req.body.token;
-    let nuevaPassword = req.body.nueva;
-
-    // Verificar si nuevaPassword está definido y no es una cadena vacía
-    if (!nuevaPassword || typeof nuevaPassword !== 'string') {
-      console.log(nuevaPassword)
-      return res.status(400).json({ message: 'La nueva contraseña es inválida' });
-    }
-
-    // Encripta la nueva contraseña
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(nuevaPassword, salt);
+    const { correo, token, nuevaPassword } = req.body; // Obtiene los datos del cuerpo de la solicitud
 
     // Busca el usuario por correo y token
-    const usuario = await Usuario.findOne({ correo: correo, token: token });
+    const usuario = await Usuario.findOne({ correo: correo, token: token ,password:nuevaPassword});
 
     // Si no se encuentra el usuario, devuelve un mensaje de error
     if (!usuario) {
       return res.status(404).json({ message: "Usuario no encontrado" });
     }
+
+    // Encripta la nueva contraseña
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(nuevaPassword, salt);
 
     // Actualiza la contraseña del usuario en la base de datos
     usuario.password = hashedPassword;
@@ -248,3 +242,15 @@ exports.actualizarPassword = async (req, res) => {
     res.status(500).json({ message: "Ocurrió un error al actualizar la contraseña" });
   }
 };
+
+
+
+
+
+
+
+
+
+
+
+

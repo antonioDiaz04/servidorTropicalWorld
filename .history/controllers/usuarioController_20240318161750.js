@@ -216,11 +216,10 @@ exports.actualizarPassword = async (req, res) => {
   try {
     let correo = req.body.correo;
     let token = req.body.token;
-    let nuevaPassword = req.body.nueva;
+    let nuevaPassword = req.body.password;
 
     // Verificar si nuevaPassword está definido y no es una cadena vacía
     if (!nuevaPassword || typeof nuevaPassword !== 'string') {
-      console.log(nuevaPassword)
       return res.status(400).json({ message: 'La nueva contraseña es inválida' });
     }
 

@@ -23,9 +23,7 @@ const UsuarioSchema = mongoose.Schema({
     required:true
 },
 
-  token: {
-    type:String
-},
+,
   pregunta: {
     type: String,
     required:false,

@@ -16,8 +16,7 @@ router.get('/cliente',usuarioController.clienteRoute);
 
 
 
-router.put('/actualiza',usuarioController.actualizarPassword)
-router.post('/token',usuarioController.BuscaUsuarioByToken)
+router.post('/token',usuarioController.BuscaUsuarioByT)
 router.post('/correo',usuarioController.BuscaUsuarioByCorreo)
 router.post('/singUp',usuarioController.crearUsuario);
 router.post('/singIn',usuarioController.Login);
