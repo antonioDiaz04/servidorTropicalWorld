@@ -6,9 +6,11 @@ const dispositivoController = require('../controllers/dispositivoController');
 router.get('/estadoLed/led',dispositivoController.estadoled)
 router.post('/guardarDatos', dispositivoController.guardaDatos);
 router.get('/', dispositivoController.obtenerDispositivos);
+
 // router.get('/:id', dispositivoController.obtenerDetalleDispositivoById);
 //=================IMAGEN===========
-
+//  user: 'tropiclaworldofficial@gmail.com', // Cambia por tu email
+// pass: '123Awawn' 
 // router.route('/photos/:id')
 // .get(getPhotos)
 // .post(deletePhoto)

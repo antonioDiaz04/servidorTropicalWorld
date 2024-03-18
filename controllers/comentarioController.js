@@ -1,44 +1,6 @@
 const Comentario = require("../models/Comentario");
 const { param } = require("../routes/producto");
 
-// exports.crearProducto = async (req, res) => {
-//   try{
-
-//     // const producto2 = new Producto({
-//     //   ...req.body,
-//     //   photo: photo._id, // Asignar el ID de la foto al producto si hay una relación
-//     // });
-
-//     const producto = new Producto(req.body);
-//     const resultado = await producto.save(); // Corrección aquí
-//     res.status(200).send(resultado);
-  
-
-//    console.log(req.body);// esto permite mostrar los resultados del json /    res.status(201).json(resultado);
-  
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).send("Ocurrió un error");
-//   }
-// };
-
-
-        
-// exports.obtenerDetalleProductoById = async (req, res) => {
-//   try {
-//     const producto = await Producto.findById(req.params.id);
-//     if (!producto) {
-//       return res.status(404).json({ msg: "Producto no encontrado" });
-//     }
-//     res.json(producto);
-//   } catch (error) {
-//     console.log(error);
-//     res.status(500).send("Ocurrió un error");
-//   }
-// };
-
-
-
 
 exports.obtenerComentarios = async (req, res) => {
   try {

@@ -3,6 +3,8 @@ const conectarDB = require('./config/conexion');
 const cors = require('cors');
 // creamos el servidor
 const app = express();
+
+const bodyParser = require('body-parser');
 const cookieParser=require('cookie-parser');
 // conectamos a la base de datos
 conectarDB();
@@ -13,11 +15,37 @@ const corsOptions = {
   
 app.use(cookieParser());
 app.use(cors(corsOptions));
+app.use(bodyParser.json());
 app.use(express.json());
+
+
+
+
+app.use(cors())
+
+
+
+
+
+// const routes = require('./routes/routes');
+
+// Middleware para parsear el cuerpo de las solicitudes como JSON
+// app.use(express.json());
+
+
+// Asigna las rutas definidas en routes.js
+// app.use('/', routes);
+// app.post('/continuarEnvioCorreo', (req, res) => {
+//  configMensaje(req.body);
+//  res.status(200).send();
+// })
+
+
 app.use('/comentarios',require('./routes/comentario'))
 app.use('/productos', require('./routes/producto'));
 app.use('/usuarios',require('./routes/usuario'));
 app.use('/dispositivos',require('./routes/dispositivo'));
+app.use('/correo',require('./routes/mensaje'))
 
 app.listen(4000, () => {
     console.log("el servidor esta corriendo perfectamente en el puerto 4000 ");
