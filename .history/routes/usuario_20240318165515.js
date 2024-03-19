@@ -16,11 +16,9 @@ router.get('/cliente',usuarioController.clienteRoute);
 
 
 
-router.put('/actualizaxCorreo',usuarioController.actualizarPasswordxCorreo)
-router.put('/actualizaxPregunta',usuarioController.actualizarPasswordxPregunta)
+router.put('/actualiza',usuarioController.actualizarPasswordxCorreo)
 router.post('/token',usuarioController.BuscaUsuarioByToken)
 router.post('/correo',usuarioController.BuscaUsuarioByCorreo)
-router.post('/respuesta',usuarioController.BuscaUsuarioByPreguntayRespuesta)
 router.post('/singUp',usuarioController.crearUsuario);
 router.post('/singIn',usuarioController.Login);
 router.get('/',usuarioController.obtenerUsuarios);

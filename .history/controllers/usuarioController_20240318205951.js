@@ -206,7 +206,7 @@ exports.BuscaUsuarioByPreguntayRespuesta = async (req, res) => {
   try {
     const {pregunta,respuesta }= req.body;
 
-    const usuario = await Usuario.findOne({pregunta:pregunta,respuesta:respuesta} );
+    const usuario = await Usuario.findOne({pregunta:pregunta,respuesta:token} );
    console.log(usuario);
     if (!usuario) {
       return res

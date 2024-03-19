@@ -202,26 +202,6 @@ exports.BuscaUsuarioByToken = async (req, res) => {
   }
 };
 
-exports.BuscaUsuarioByPreguntayRespuesta = async (req, res) => {
-  try {
-    const {pregunta,respuesta }= req.body;
-
-    const usuario = await Usuario.findOne({pregunta:pregunta,respuesta:respuesta} );
-   console.log(usuario);
-    if (!usuario) {
-      return res
-        .status(404)
-        .json({ message: "usuario no encontrado" });
-     
-    }
-    res.json(usuario)
-
-  } catch (error) {
-    console.log(error);
-    res.status(404).send("ocurrio un error");
-  }
-};
-
 exports.obtenerUsuarios = async (req, res) => {
   try {
     const usuarios = await Usuario.find();
@@ -276,9 +256,7 @@ exports.actualizarPasswordxPregunta = async (req, res) => {
     let pregunta = req.body.pregunta;
     let respuesta = req.body.respuesta;
     let nuevaPassword = req.body.nueva;
-console.log("pregunta=>",pregunta)
-console.log("respuesta=>",respuesta)
-console.log("nuevaPassword=>",nuevaPassword)
+
     // Verificar si nuevaPassword está definido y no es una cadena vacía
     if (!nuevaPassword || typeof nuevaPassword !== 'string') {
       console.log(nuevaPassword)
@@ -290,7 +268,7 @@ console.log("nuevaPassword=>",nuevaPassword)
     const hashedPassword = await bcrypt.hash(nuevaPassword, salt);
 
     // Busca el usuario por correo y token
-    const usuario = await Usuario.findOne({ pregunta: pregunta, respuesta: respuesta });
+    const usuario = await Usuario.findOne({ pregunta: correo, token: token });
 
     // Si no se encuentra el usuario, devuelve un mensaje de error
     if (!usuario) {

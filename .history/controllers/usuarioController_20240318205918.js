@@ -202,11 +202,11 @@ exports.BuscaUsuarioByToken = async (req, res) => {
   }
 };
 
-exports.BuscaUsuarioByPreguntayRespuesta = async (req, res) => {
+exports.BuscaUsuarioByToken = async (req, res) => {
   try {
-    const {pregunta,respuesta }= req.body;
+    const {correo,token }= req.body;
 
-    const usuario = await Usuario.findOne({pregunta:pregunta,respuesta:respuesta} );
+    const usuario = await Usuario.findOne({correo:correo,token:token} );
    console.log(usuario);
     if (!usuario) {
       return res

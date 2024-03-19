@@ -202,26 +202,6 @@ exports.BuscaUsuarioByToken = async (req, res) => {
   }
 };
 
-exports.BuscaUsuarioByPreguntayRespuesta = async (req, res) => {
-  try {
-    const {pregunta,respuesta }= req.body;
-
-    const usuario = await Usuario.findOne({pregunta:pregunta,respuesta:respuesta} );
-   console.log(usuario);
-    if (!usuario) {
-      return res
-        .status(404)
-        .json({ message: "usuario no encontrado" });
-     
-    }
-    res.json(usuario)
-
-  } catch (error) {
-    console.log(error);
-    res.status(404).send("ocurrio un error");
-  }
-};
-
 exports.obtenerUsuarios = async (req, res) => {
   try {
     const usuarios = await Usuario.find();
@@ -232,7 +212,7 @@ exports.obtenerUsuarios = async (req, res) => {
 };
 
 
-exports.actualizarPasswordxCorreo = async (req, res) => {
+exports.actualizarPasswordBy = async (req, res) => {
   try {
     let correo = req.body.correo;
     let token = req.body.token;
@@ -250,47 +230,6 @@ exports.actualizarPasswordxCorreo = async (req, res) => {
 
     // Busca el usuario por correo y token
     const usuario = await Usuario.findOne({ correo: correo, token: token });
-
-    // Si no se encuentra el usuario, devuelve un mensaje de error
-    if (!usuario) {
-      return res.status(404).json({ message: "Usuario no encontrado" });
-    }
-
-    // Actualiza la contraseña del usuario en la base de datos
-    usuario.password = hashedPassword;
-    await usuario.save();
-
-    // Devuelve una respuesta exitosa
-    res.status(200).json({ message: "Contraseña actualizada correctamente" });
-  } catch (error) {
-    // Maneja los errores y devuelve una respuesta de error
-    console.error(error);
-    res.status(500).json({ message: "Ocurrió un error al actualizar la contraseña" });
-  }
-};
-
-
-
-exports.actualizarPasswordxPregunta = async (req, res) => {
-  try {
-    let pregunta = req.body.pregunta;
-    let respuesta = req.body.respuesta;
-    let nuevaPassword = req.body.nueva;
-console.log("pregunta=>",pregunta)
-console.log("respuesta=>",respuesta)
-console.log("nuevaPassword=>",nuevaPassword)
-    // Verificar si nuevaPassword está definido y no es una cadena vacía
-    if (!nuevaPassword || typeof nuevaPassword !== 'string') {
-      console.log(nuevaPassword)
-      return res.status(400).json({ message: 'La nueva contraseña es inválida' });
-    }
-
-    // Encripta la nueva contraseña
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(nuevaPassword, salt);
-
-    // Busca el usuario por correo y token
-    const usuario = await Usuario.findOne({ pregunta: pregunta, respuesta: respuesta });
 
     // Si no se encuentra el usuario, devuelve un mensaje de error
     if (!usuario) {
