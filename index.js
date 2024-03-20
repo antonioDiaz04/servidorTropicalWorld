@@ -27,20 +27,6 @@ app.use(cors())
 
 
 
-// const routes = require('./routes/routes');
-
-// Middleware para parsear el cuerpo de las solicitudes como JSON
-// app.use(express.json());
-
-
-// Asigna las rutas definidas en routes.js
-// app.use('/', routes);
-// app.post('/continuarEnvioCorreo', (req, res) => {
-//  configMensaje(req.body);
-//  res.status(200).send();
-// })
-
-
 app.use('/comentarios',require('./routes/comentario'))
 app.use('/productos', require('./routes/producto'));
 app.use('/usuarios',require('./routes/usuario'));

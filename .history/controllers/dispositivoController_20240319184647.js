@@ -5,18 +5,19 @@ const { param } = require("../routes/dispositivo");
 exports.actualizaEstadoLed = async (req, res) => {
   try {
     const { led } = req.body;
-console.log(led)
+
     // Verificar si led es un número válido (0 o 1)
     if (typeof led !== 'number' || (led !== 0 && led !== 1)) {
       return res.status(400).json({ mensaje: 'El valor de LED debe ser 0 o 1' });
     }
 
     // Actualizar el estado del LED en la base de datos
-    await Dispositivo.findOneAndUpdate(
-      { 'led' :led } // Actualizar el valor del LED con el valor recibido
+    await Dispositivo.updateOne(
+      { nombre: 'LED' }, // Filtro para encontrar el dispositivo con nombre 'LED'
+      { led: led } // Actualizar el valor del LED con el valor recibido
     );
 
-//    console.log(req.body);// esto permite mostrar los resultados del json /    res.status(201).json(resultado);
+    // console.log(req.body);// esto permite mostrar los resultados del json /    res.status(201).json(resultado);
   
     res.status(200).json({ mensaje: 'Estado del LED actualizado correctamente' });
   } catch (error) {

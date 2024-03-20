@@ -12,8 +12,9 @@ console.log(led)
     }
 
     // Actualizar el estado del LED en la base de datos
-    await Dispositivo.findOneAndUpdate(
-      { 'led' :led } // Actualizar el valor del LED con el valor recibido
+    await Dispositivo.updateOne(
+      { nombre: 'led' }, // Filtro para encontrar el dispositivo con nombre 'LED'
+      { led: led } // Actualizar el valor del LED con el valor recibido
     );
 
 //    console.log(req.body);// esto permite mostrar los resultados del json /    res.status(201).json(resultado);

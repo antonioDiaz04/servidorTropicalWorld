@@ -1,23 +1,24 @@
 const Dispositivo = require("../models/Dispositivo");
 const { param } = require("../routes/dispositivo");
 
-
 exports.actualizaEstadoLed = async (req, res) => {
   try {
+    const { id } = req.params;
     const { led } = req.body;
-console.log(led)
-    // Verificar si led es un número válido (0 o 1)
-    if (typeof led !== 'number' || (led !== 0 && led !== 1)) {
-      return res.status(400).json({ mensaje: 'El valor de LED debe ser 0 o 1' });
+
+    // Buscar el dispositivo por su ID
+    const dispositivo = await Dispositivo.findById(id);
+console.log(dispositivo)
+    if (!dispositivo) {
+      return res.status(404).json({ mensaje: 'Dispositivo no encontrado' });
     }
 
-    // Actualizar el estado del LED en la base de datos
-    await Dispositivo.findOneAndUpdate(
-      { 'led' :led } // Actualizar el valor del LED con el valor recibido
-    );
+    // Actualizar el estado del LED del dispositivo
+    dispositivo.led = led;
 
-//    console.log(req.body);// esto permite mostrar los resultados del json /    res.status(201).json(resultado);
-  
+    // Guardar los cambios actualizados
+    await dispositivo.save();
+
     res.status(200).json({ mensaje: 'Estado del LED actualizado correctamente' });
   } catch (error) {
     console.error('Error al actualizar el estado del LED:', error);
@@ -26,20 +27,10 @@ console.log(led)
 };
 
 
-// exports.actualizaEstadoLed = async (req, res) => {
-//   try{
 
-//     const dispositivo = new    Dispositivo(req.body);
-//     const resultado = await dispositivo.save(); // Corrección aquí
-//     res.status(200).send(resultado);
 
-//    console.log(req.body);// esto permite mostrar los resultados del json /    res.status(201).json(resultado);
-  
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).send("Ocurrió un error");
-//   }
-// };
+
+
 
 // Endpoint para obtener el estad
 exports.estadoled = async (req, res) => {

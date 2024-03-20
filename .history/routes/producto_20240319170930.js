@@ -1,6 +1,7 @@
 // rutas para producto
 const express = require("express");
 const router = express.Router();
+// const upload = require('../libs/multer');
 const productoController = require('../controllers/productoController');
 //api/producto
 router.post('/', productoController.crearProducto);
