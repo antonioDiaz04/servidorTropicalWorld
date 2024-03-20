@@ -11,49 +11,44 @@ exports.obtenerComentarios = async (req, res) => {
   }
 }
 
-exports.crearComentarioInvitado = async (req, res) => {
-  try {
-    const { nombre, correo, comentario } = req.body; // Obtener los datos del cuerpo de la solicitud
+exports.crearProducto = async (req, res) => {
+  try{
 
-    // Crear una nueva instancia de Comentario con los datos proporcionados
-    const nuevoComentario = new Comentario({ nombre, correo, comentario });
+    // const producto2 = new Producto({
+    //   ...req.body,
+    //   photo: photo._id, // Asignar el ID de la foto al producto si hay una relación
+    // });
 
-    // Guardar el nuevo comentario en la base de datos
-    const resultado = await nuevoComentario.save();
+    const producto = new Producto(req.body);
+    const resultado = await producto.save(); // Corrección aquí
+    res.status(200).send(resultado);
+  
 
-    // Enviar una respuesta al cliente con el resultado
-    res.status(200).json(resultado);
+   console.log(req.body);// esto permite mostrar los resultados del json /    res.status(201).json(resultado);
+  
   } catch (error) {
     console.error(error);
-    res.status(500).send("Ocurrió un error al guardar el comentario");
+    res.status(500).send("Ocurrió un error");
   }
 };
 
+exports.crearComentarioInvitado=async(req,res)=>
+{
 
-// exports.crearProducto = async (req, res) => {
-//   try{
+  const producto = new Producto(req.body);
+  const resultado = await producto.save(); // Corrección aquí
+  res.status(200).send(resultado);
+  console.log(req.body);// esto permite mostrar los resultados del json /    res.status(201).json(resultado);
 
-//     // const producto2 = new Producto({
-//     //   ...req.body,
-//     //   photo: photo._id, // Asignar el ID de la foto al producto si hay una relación
-//     // });
-
-//     const producto = new Producto(req.body);
-//     const resultado = await producto.save(); // Corrección aquí
-//     res.status(200).send(resultado);
+try {
   
+} catch (error) {
+  console.error(error);
+  res.status(500).send("Ocurrió un error");
+}
+}
 
-//    console.log(req.body);// esto permite mostrar los resultados del json /    res.status(201).json(resultado);
-  
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).send("Ocurrió un error");
-//   }
-// };
-
-
-
-
+}
 
 // exports.actualizarProducto = async (req, res) => {
 //   try {

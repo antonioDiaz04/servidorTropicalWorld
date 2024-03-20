@@ -62,13 +62,10 @@ exports.estadoled = async (req, res) => {
         res.status(500).send('Error al obtener el estado del LED');
     }
 };
-
-
-
-exports.estadoValancin = async (req, res) => {
+exports.obtenerEstadoValancin = async (req, res) => {
     try {
         
-        const dispositivo = await Dispositivo.findOne().sort({ led: -1 });
+        const dispositivo = await Dispositivo.findOne().sort({ fechaCreacion: -1 });
 
         res.send(dispositivo.valancin.toString());
     } catch (error) {

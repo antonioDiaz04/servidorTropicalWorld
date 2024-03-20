@@ -27,23 +27,23 @@ console.log(led)
 
 exports.actualizaEstadoValancin = async (req, res) => {
   try {
-    const { valancin } = req.body;
-console.log(valancin)
+    const { led } = req.body;
+console.log(led)
     // Verificar si led es un número válido (0 o 1)
-    if (typeof valancin !== 'number' || (valancin !== 0 && valancin !== 1)) {
+    if (typeof led !== 'number' || (led !== 0 && led !== 1)) {
       return res.status(400).json({ mensaje: 'El valor de LED debe ser 0 o 1' });
     }
 
     // Actualizar el estado del LED en la base de datos
     await Dispositivo.findOneAndUpdate(
-      { 'valancin' :valancin } // Actualizar el valor del LED con el valor recibido
+      { 'led' :led } // Actualizar el valor del LED con el valor recibido
     );
 
 //    console.log(req.body);// esto permite mostrar los resultados del json /    res.status(201).json(resultado);
   
-    res.status(200).json({ mensaje: 'Estado del valancin actualizado correctamente' });
+    res.status(200).json({ mensaje: 'Estado del LED actualizado correctamente' });
   } catch (error) {
-    console.error('Error al actualizar el estado del valancin:', error);
+    console.error('Error al actualizar el estado del LED:', error);
     res.status(500).json({ mensaje: 'Error interno del servidor' });
   }
 };
@@ -60,20 +60,6 @@ exports.estadoled = async (req, res) => {
     } catch (error) {
         console.error('Error al obtener el estado del LED:', error);
         res.status(500).send('Error al obtener el estado del LED');
-    }
-};
-
-
-
-exports.estadoValancin = async (req, res) => {
-    try {
-        
-        const dispositivo = await Dispositivo.findOne().sort({ led: -1 });
-
-        res.send(dispositivo.valancin.toString());
-    } catch (error) {
-        console.error('Error al obtener el estado del Valancin:', error);
-        res.status(500).send('Error al obtener el estado del valancin');
     }
 };
 

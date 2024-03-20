@@ -12,15 +12,13 @@ const DispositivoSchema = mongoose.Schema({
 
   },humedad:{
     type:Number,
-    default: Date.now
+    default: Date.now,
 
   },musica:{
-type:Number,
-default: Date.now,
+type:Number
   }
   ,valancin:{
-    type:Number,
-    default: Date.now,
+    type:Number
       }
       ,
   fechaCreacion: {

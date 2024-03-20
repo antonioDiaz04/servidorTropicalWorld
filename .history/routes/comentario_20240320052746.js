@@ -16,7 +16,7 @@ router.get('/',comentarioController.obtenerComentarios);
 
 
 
-router.post('/comentarioInvitado',comentarioController.crearComentarioInvitado);
+router.post('/comentarioInvitado',comentarioController.crearComentario);
 // router.post('/singIn',usuarioController.Login);
 // router.get('/',usuarioController.obtenerUsuarios);
 // router.get('/:id',usuarioController.obtenerUsuarioById)

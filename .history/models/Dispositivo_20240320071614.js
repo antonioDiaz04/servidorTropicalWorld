@@ -4,23 +4,16 @@ const DispositivoSchema = mongoose.Schema({
   led: {
     type:Number,
     required: true,
-    default: Date.now
   },
   temperatura:{
-    type:Number,
-    default: Date.now,
-
+    type:Number
   },humedad:{
-    type:Number,
-    default: Date.now
-
+    type:Number
   },musica:{
-type:Number,
-default: Date.now,
+type:Number
   }
   ,valancin:{
-    type:Number,
-    default: Date.now,
+    type:Number
       }
       ,
   fechaCreacion: {

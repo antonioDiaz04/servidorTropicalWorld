@@ -19,7 +19,7 @@ type:Number,
 default: Date.now,
   }
   ,valancin:{
-    type:Number,
+    type:Number
     default: Date.now,
       }
       ,

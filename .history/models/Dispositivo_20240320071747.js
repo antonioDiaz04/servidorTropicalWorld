@@ -15,12 +15,10 @@ const DispositivoSchema = mongoose.Schema({
     default: Date.now
 
   },musica:{
-type:Number,
-default: Date.now,
+type:Number
   }
   ,valancin:{
-    type:Number,
-    default: Date.now,
+    type:Number
       }
       ,
   fechaCreacion: {

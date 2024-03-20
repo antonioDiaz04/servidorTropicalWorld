@@ -68,7 +68,7 @@ exports.estadoled = async (req, res) => {
 exports.estadoValancin = async (req, res) => {
     try {
         
-        const dispositivo = await Dispositivo.findOne().sort({ led: -1 });
+        const dispositivo = await Dispositivo.findOne().sort({ fechaCreacion: -1 });
 
         res.send(dispositivo.valancin.toString());
     } catch (error) {

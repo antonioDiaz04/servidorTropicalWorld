@@ -19,8 +19,7 @@ type:Number,
 default: Date.now,
   }
   ,valancin:{
-    type:Number,
-    default: Date.now,
+    type:Number
       }
       ,
   fechaCreacion: {

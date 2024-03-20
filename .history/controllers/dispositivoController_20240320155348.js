@@ -30,7 +30,7 @@ exports.actualizaEstadoValancin = async (req, res) => {
     const { valancin } = req.body;
 console.log(valancin)
     // Verificar si led es un número válido (0 o 1)
-    if (typeof valancin !== 'number' || (valancin !== 0 && valancin !== 1)) {
+    if (typeof valancin !== 'number' || (valancin !== 0 && led !== 1)) {
       return res.status(400).json({ mensaje: 'El valor de LED debe ser 0 o 1' });
     }
 
@@ -62,14 +62,12 @@ exports.estadoled = async (req, res) => {
         res.status(500).send('Error al obtener el estado del LED');
     }
 };
-
-
-
-exports.estadoValancin = async (req, res) => {
+exports.obtenerEstadoValancin = async (req, res) => {
     try {
-        
-        const dispositivo = await Dispositivo.findOne().sort({ led: -1 });
+        // Consultar el estado actual del LED en la base de datos
+        const dispositivo = await Dispositivo.findOne().sort({ fechaCreacion: -1 });
 
+        // Devolver solo el estado del LED como respuesta
         res.send(dispositivo.valancin.toString());
     } catch (error) {
         console.error('Error al obtener el estado del Valancin:', error);

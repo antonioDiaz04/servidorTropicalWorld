@@ -5,7 +5,7 @@ const dispositivoController = require('../controllers/dispositivoController');
 //api/producto
 // router.put('/cambiarEstadoLed',dispositivoController.actualizaEstadoLed)
 router.get('/obtenerEstadoLed',dispositivoController.estadoled)
-router.get('/obtenerEstadoValancin',dispositivoController.estadoValancin)
+router.get('/obtenerEstadoLed',dispositivoController.estadoled)
 router.put('/cambiarEstadoLed', dispositivoController.actualizaEstadoLed);
 router.put('/cambiarEstadoValancin', dispositivoController.actualizaEstadoValancin);
 router.get('/', dispositivoController.obtenerDispositivos);

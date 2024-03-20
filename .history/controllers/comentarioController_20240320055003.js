@@ -11,25 +11,6 @@ exports.obtenerComentarios = async (req, res) => {
   }
 }
 
-exports.crearComentarioInvitado = async (req, res) => {
-  try {
-    const { nombre, correo, comentario } = req.body; // Obtener los datos del cuerpo de la solicitud
-
-    // Crear una nueva instancia de Comentario con los datos proporcionados
-    const nuevoComentario = new Comentario({ nombre, correo, comentario });
-
-    // Guardar el nuevo comentario en la base de datos
-    const resultado = await nuevoComentario.save();
-
-    // Enviar una respuesta al cliente con el resultado
-    res.status(200).json(resultado);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Ocurrió un error al guardar el comentario");
-  }
-};
-
-
 // exports.crearProducto = async (req, res) => {
 //   try{
 
