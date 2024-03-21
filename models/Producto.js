@@ -15,6 +15,10 @@ const ProductoSchema = mongoose.Schema({
   precio: {
     type: Number,
     required: true,
+  },descripcion:{
+
+    type:String,
+    required: true,
   }
   ,
   fechaCreacion: {

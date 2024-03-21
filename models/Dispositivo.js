@@ -22,6 +22,11 @@ default: Date.now,
     type:Number,
     default: Date.now,
       }
+      
+  ,carrucel:{
+    type:Number,
+    default: Date.now,
+      }
       ,
   fechaCreacion: {
     type: Date,

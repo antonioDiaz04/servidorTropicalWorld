@@ -51,7 +51,7 @@ exports.obtenerProductos = async (req, res) => {
 
 exports.actualizarProducto = async (req, res) => {
   try {
-    const { nombre, categoria, ubicacion, precio } = req.body;
+    const { nombre, categoria, ubicacion, precio,descripcion } = req.body;
     let producto = await Producto.findById(req.params.id);
     if (!producto) {
       res.status(404).json({ msg: 'No existe el producto' });
@@ -60,6 +60,7 @@ exports.actualizarProducto = async (req, res) => {
     producto.categoria = categoria;
     producto.ubicacion = ubicacion;
     producto.precio = precio;
+    producto.descripcion=descripcion;
 
     producto = await Producto.findOneAndUpdate({ _id: req.params.id }, producto, { new: true });
     res.json(producto);

@@ -11,6 +11,8 @@ console.log(led)
       return res.status(400).json({ mensaje: 'El valor de LED debe ser 0 o 1' });
     }
 
+
+    
     // Actualizar el estado del LED en la base de datos
     await Dispositivo.findOneAndUpdate(
       { 'led' :led } // Actualizar el valor del LED con el valor recibido
@@ -49,6 +51,30 @@ console.log(valancin)
 };
 
 
+exports.actualizaEstadoCarrucel = async (req, res) => {
+  try {
+    const { carrucel } = req.body;
+console.log(carrucel)
+    // Verificar si led es un número válido (0 o 1)
+    if (typeof carrucel !== 'number' || (carrucel !== 0 && carrucel !== 1)) {
+      return res.status(400).json({ mensaje: 'El valor de carrucel debe ser 0 o 1' });
+    }
+
+    // Actualizar el estado del LED en la base de datos
+    await Dispositivo.findOneAndUpdate(
+      { 'carrucel' :carrucel } // Actualizar el valor del LED con el valor recibido
+    );
+
+//    console.log(req.body);// esto permite mostrar los resultados del json /    res.status(201).json(resultado);
+  
+    res.status(200).json({ mensaje: 'Estado del carrucel actualizado correctamente' });
+  } catch (error) {
+    console.error('Error al actualizar el estado del carrucel:', error);
+    res.status(500).json({ mensaje: 'Error interno del servidor' });
+  }
+};
+
+
 // Endpoint para obtener el estad
 exports.estadoled = async (req, res) => {
     try {
@@ -74,6 +100,17 @@ exports.estadoValancin = async (req, res) => {
     } catch (error) {
         console.error('Error al obtener el estado del Valancin:', error);
         res.status(500).send('Error al obtener el estado del valancin');
+    }
+};
+exports.estadoCarrucel = async (req, res) => {
+    try {
+        
+        const dispositivo = await Dispositivo.findOne().sort({ valancin: -1 });
+
+        res.send(dispositivo.valancin.toString());
+    } catch (error) {
+        console.error('Error al obtener el estado del Carrucel:', error);
+        res.status(500).send('Error al obtener el estado del Carrucel');
     }
 };
 
