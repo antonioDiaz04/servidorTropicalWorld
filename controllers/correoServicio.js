@@ -41,7 +41,7 @@ exports.enviarCorreoycuerpo= async(req, res) => {
 // Función para enviar el correo electrónico
 function enviarCorreo(correo) {
     const mailOptions = {
-      from: '"Maddison Foo Koch " driftspotky@gmail.com',// Cambiar por tu email
+      from: '"Tropical World official " tropicalWorld@gmail.com',// Cambiar por tu email
       to: correo,
       subject: 'Recuperación de contraseña',
       html: `

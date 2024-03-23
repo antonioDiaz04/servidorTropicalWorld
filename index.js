@@ -29,15 +29,8 @@ app.use((req, res, next) => {
 
 app.use('/correo',require('./routes/mensaje'))
 
-
-
-
-
-
-
-
-
 app.use('/comentarios',require('./routes/comentario'))
+app.use('/privado',require('./routes/privado'))
 app.use('/productos', require('./routes/producto'));
 app.use('/usuarios',require('./routes/usuario'));
 app.use('/dispositivos',require('./routes/dispositivo'));

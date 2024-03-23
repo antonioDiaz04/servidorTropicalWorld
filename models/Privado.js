@@ -1,7 +1,11 @@
 const mongoose = require("mongoose");
-const PrivateSchema = mongoose.Schema({
+const PoliticaNegocioSchema = mongoose.Schema({
 
-  politicas: {
+  titulo: {
+    type:String,
+    required: true,
+  },
+  contenido: {
     type:String,
     required: true,
   },
@@ -10,6 +14,47 @@ const PrivateSchema = mongoose.Schema({
     default: Date.now(),
   },
 });
+const AcercaSchema = mongoose.Schema({
 
-// mongoose.exports = mongoose.model('Producto', ProductoSchema);
-module.exports = mongoose.model('Private', PrivateSchema);
+  titulo: {
+    type:String,
+    required: true,
+  },
+  contenido: {
+    type: String,
+    default: Date.now(),
+  },
+});
+
+
+
+const PreguntaSchema = mongoose.Schema({
+
+  titulo: {
+    type:String,
+    required: true,
+  },
+  contenido: {
+    type: String,
+    default: Date.now(),
+  },
+});
+const ContactoSchema = mongoose.Schema({
+
+  titulo: {
+    type:String,
+    required: true,
+  },
+  contenido: {
+    type: String,
+    default: Date.now(),
+  },
+});
+
+
+module.exports = {
+    Politica: mongoose.model("Politica", PoliticaNegocioSchema),
+    AcercaDe: mongoose.model("AcercaDe", AcercaSchema),
+    Pregunta: mongoose.model("Pregunta", PreguntaSchema),
+    Contacto: mongoose.model("Contacto", ContactoSchema),
+  };

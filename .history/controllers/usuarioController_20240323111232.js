@@ -278,15 +278,6 @@ exports.BuscaUsuarioByPreguntayRespuesta = async (req, res) => {
 //   }
 // };
 
-exports.obtenerUsuarios = async (req, res) => {
-  try {
-    // Excluye el usuario con el rol "admin" de la consulta
-    const usuarios = await Usuario.find({ rol: { $ne: "admin" } });
-    res.json(usuarios);
-  } catch (error) {
-    console.log("error de consulta");
-  }
-};
 
 exports.actualizarPasswordxCorreo = async (req, res) => {
   try {

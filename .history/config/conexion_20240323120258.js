@@ -23,7 +23,7 @@ const conectarDB = async () => {
         }, 1000);
 
         clearInterval(intervalo); // Detiene el contador
-        console.log("Conexión establecida");
+        console.log("\nConexión establecida");
         console.log(`
                               ,//@@@.
                          .///////@@@@@@@&.

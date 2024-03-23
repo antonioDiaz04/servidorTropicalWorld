@@ -5,7 +5,7 @@ const { param } = require("../routes/dispositivo");
 exports.actualizaEstadoLed = async (req, res) => {
   try {
     const { led } = req.body;
-console.log(led)
+console.log("led=>",led)
     // Verificar si led es un número válido (0 o 1)
     if (typeof led !== 'number' || (led !== 0 && led !== 1)) {
       return res.status(400).json({ mensaje: 'El valor de LED debe ser 0 o 1' });
@@ -30,7 +30,7 @@ console.log(led)
 exports.actualizaEstadoValancin = async (req, res) => {
   try {
     const { valancin } = req.body;
-console.log(valancin)
+console.log("valancin=>",valancin)
     // Verificar si led es un número válido (0 o 1)
     if (typeof valancin !== 'number' || (valancin !== 0 && valancin !== 1)) {
       return res.status(400).json({ mensaje: 'El valor de LED debe ser 0 o 1' });
@@ -54,7 +54,7 @@ console.log(valancin)
 exports.actualizaEstadoCarrucel = async (req, res) => {
   try {
     const { carrucel } = req.body;
-console.log(carrucel)
+console.log("carrucel=>",carrucel)
     // Verificar si led es un número válido (0 o 1)
     if (typeof carrucel !== 'number' || (carrucel !== 0 && carrucel !== 1)) {
       return res.status(400).json({ mensaje: 'El valor de carrucel debe ser 0 o 1' });
@@ -77,7 +77,7 @@ console.log(carrucel)
 exports.actualizaEstadoMusica = async (req, res) => {
   try {
     const { musica } = req.body;
-console.log(musica)
+console.log("musica=>",musica)
     // Verificar si led es un número válido (0 o 1)
     if (typeof musica !== 'number' || (musica !== 0 && musica !== 1)) {
       return res.status(400).json({ mensaje: 'El valor de musica debe ser 0 o 1' });
@@ -130,7 +130,7 @@ exports.estadoValancin = async (req, res) => {
 exports.estadoCarrucel = async (req, res) => {
     try {
         
-        const dispositivo = await Dispositivo.findOne().sort({ fechaCreacion: -1 });
+        const dispositivo = await Dispositivo.findOne().sort({ valancin: -1 });
 
         res.send(dispositivo.carrucel.toString());
     } catch (error) {
