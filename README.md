@@ -48,8 +48,7 @@ ejemplo con ip :http://192.168.0.107:4000/dispositivos/estadoLed/led
 
 const char *ssid = "red";//tu red ,aqui lo modificas
 const char *password = "password";//tu password,aqui igual 
-const char *url = "http://servidortropicalworld-1.onrender.com/dispositivos/estadoLed/led"; // Endpoint para consultar el estado del LED
-
+const char *url = "https://servidortropicalworld-1.onrender.com/dispositivos/obtenerEstadoLed";
 // Pin del LED
 const int pinLed = 2;
 
