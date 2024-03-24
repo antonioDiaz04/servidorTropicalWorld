@@ -190,7 +190,4 @@ exports.obtenerDispositivos = async (req, res) => {
     res.json(dispositivos);
   } catch {
     console.log("error");
-
-
   }
-}

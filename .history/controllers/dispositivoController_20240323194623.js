@@ -191,6 +191,5 @@ exports.obtenerDispositivos = async (req, res) => {
   } catch {
     console.log("error");
 
-
+    
   }
-}

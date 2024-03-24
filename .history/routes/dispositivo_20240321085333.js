@@ -8,12 +8,10 @@ router.get('/obtenerEstadoLed',dispositivoController.estadoled)
 router.get('/obtenerEstadoValancin',dispositivoController.estadoValancin)
 router.get('/obtenerEstadoCarrucel',dispositivoController.estadoCarrucel)
 router.get('/obtenerEstadoMusica',dispositivoController.estadoMusica)
-router.get('/obtenerEstadoMusica',dispositivoController.estadoTemperatura)
 router.put('/cambiarEstadoLed', dispositivoController.actualizaEstadoLed);
 router.put('/cambiarEstadoCarrucel', dispositivoController.actualizaEstadoCarrucel);
 router.put('/cambiarEstadoValancin', dispositivoController.actualizaEstadoValancin);
 router.put('/cambiarEstadoMusica', dispositivoController.actualizaEstadoMusica);
-router.put('/cambiarEstadoMusica', dispositivoController.actualizaEstadoTemperatura);
 router.get('/', dispositivoController.obtenerDispositivos);
 
 module.exports=router;

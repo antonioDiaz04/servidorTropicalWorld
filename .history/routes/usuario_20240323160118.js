@@ -24,7 +24,7 @@ router.post('/token',usuarioController.BuscaUsuarioByToken)
 
 
 router.post('/correo',usuarioController.BuscaUsuarioByCorreo)
-router.get('/miPerfil/:correo',usuarioController.perfilUsuario)
+router.get('/miPerfil/::correo',usuarioController.perfilUsuario)
 router.get('/getUsuarios',usuarioController.obtenerUsuarios)
 router.post('/respuesta',usuarioController.BuscaUsuarioByPreguntayRespuesta)
 router.post('/singUp',usuarioController.crearUsuario);

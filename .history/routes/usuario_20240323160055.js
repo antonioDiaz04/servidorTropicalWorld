@@ -22,9 +22,28 @@ router.put('/actualizaxPregunta',usuarioController.actualizarPasswordxPregunta)
 
 router.post('/token',usuarioController.BuscaUsuarioByToken)
 
+router.get('/miPerfil/:correo', async (req, res) => {
+    try {
+      const correo = req.params.correo;
+  
+      // Buscar el usuario por correo en la base de datos
+      const usuario = await Usuario.findOne({ correo });
+  
+      // Verificar si el usuario existe
+      if (!usuario) {
+        return res.status(404).json({ mensaje: 'Usuario no encontrado' });
+      }
+  
+      // Devolver los datos del perfil del usuario
+      return res.status(200).json({ datos: usuario });
+  
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ mensaje: 'Error en el servidor' });
+    }
 
 router.post('/correo',usuarioController.BuscaUsuarioByCorreo)
-router.get('/miPerfil/:correo',usuarioController.perfilUsuario)
+router.get('/miPerfil',usuarioController.perfilUsuario)
 router.get('/getUsuarios',usuarioController.obtenerUsuarios)
 router.post('/respuesta',usuarioController.BuscaUsuarioByPreguntayRespuesta)
 router.post('/singUp',usuarioController.crearUsuario);
