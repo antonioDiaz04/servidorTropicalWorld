@@ -8,7 +8,7 @@ router.get('/obtenerEstadoLed',dispositivoController.estadoled)
 router.get('/obtenerEstadoValancin',dispositivoController.estadoValancin)
 router.get('/obtenerEstadoCarrucel',dispositivoController.estadoCarrucel)
 router.get('/obtenerEstadoMusica',dispositivoController.estadoMusica)
-router.get('/obtenerEstadoTemperatura',dispositivoController.estadoTemperatura)
+router.get('/obtenerEstado',dispositivoController.estadoTemperatura)
 router.put('/cambiarEstadoLed', dispositivoController.actualizaEstadoLed);
 router.put('/cambiarEstadoCarrucel', dispositivoController.actualizaEstadoCarrucel);
 router.put('/cambiarEstadoValancin', dispositivoController.actualizaEstadoValancin);
