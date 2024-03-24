@@ -74,9 +74,6 @@ console.log("carrucel=>",carrucel)
   }
 };
 
-
-
-
 exports.actualizaEstadoMusica = async (req, res) => {
   try {
     const { musica } = req.body;
