@@ -102,27 +102,28 @@ console.log("musica=>",musica)
 
 
 
-exports.actualizaEstadoValancin = async (req, res) => {
-  try {
-    const { valancin } = req.body;
 
-    // Verificar si valancin es un string válido ("encendido" o "apagado")
-    if (typeof valancin !== 'string' || (valancin !== 'encendido' && valancin !== 'apagado')) {
-      return res.status(400).json({ mensaje: 'El valor de valancin debe ser "encendido" o "apagado"' });
+exports.actualizaEstadoTemperatura = async (req, res) => {
+  try {
+    const { temperatura } = req.body;
+
+    // Convertir la temperatura a un número
+    const temperaturaNum = parseFloat(temperatura);
+
+    // Verificar si temperaturaNum es un número válido
+    if (isNaN(temperaturaNum)) {
+      return res.status(400).json({ mensaje: 'La temperatura debe ser un número' });
     }
 
-    // Actualizar el estado del valancin en la base de datos
-    await Dispositivo.findOneAndUpdate(
-      { 'valancin' : valancin } // Actualizar el valor del valancin con el valor recibido
-    );
+    // Actualizar la temperatura en la base de datos
+    await Dispositivo.findOneAndUpdate({}, { temperatura: temperaturaNum });
 
-    res.status(200).json({ mensaje: 'Estado del valancin actualizado correctamente' });
+    res.status(200).json({ mensaje: 'Temperatura actualizada correctamente' });
   } catch (error) {
-    console.error('Error al actualizar el estado del valancin:', error);
+    console.error('Error al actualizar la temperatura:', error);
     res.status(500).json({ mensaje: 'Error interno del servidor' });
   }
 };
-
 
 
 
