@@ -96,20 +96,18 @@ console.log("musica=>",musica)
     res.status(500).json({ mensaje: 'Error interno del servidor' });
   }
 };
+
 exports.actualizaEstadoTemperatura = async (req, res) => {
   try {
     const { temperatura } = req.body;
 
-    // Convertir la temperatura a un número
-    const temperaturaNum = parseFloat(temperatura);
-
-    // Verificar si temperaturaNum es un número válido
-    if (isNaN(temperaturaNum)) {
+    // Verificar si temperatura es un número válido
+    if (typeof temperatura !== 'number') {
       return res.status(400).json({ mensaje: 'La temperatura debe ser un número' });
     }
 
     // Actualizar la temperatura en la base de datos
-    await Dispositivo.findOneAndUpdate({}, { temperatura: temperaturaNum });
+    await Dispositivo.findOneAndUpdate({}, { temperatura });
 
     res.status(200).json({ mensaje: 'Temperatura actualizada correctamente' });
   } catch (error) {
@@ -178,8 +176,6 @@ exports.estadoMusica = async (req, res) => {
 
 exports.estadoTemperatura = async (req, res) => {
   try {
-
-    
     // Consultar la temperatura más reciente en la base de datos
     const dispositivo = await Dispositivo.findOne().sort({ fechaCreacion: -1 });
 
