@@ -16,10 +16,4 @@ router.put('/cambiarEstadoMusica', dispositivoController.actualizaEstadoMusica);
 router.put('/cambiarEstadoTemperatura', dispositivoController.actualizaEstadoTemperatura);
 router.get('/', dispositivoController.obtenerDispositivos);
 
-
-
-
-// actualizaEstadoTemperatura
-
-
 module.exports=router;

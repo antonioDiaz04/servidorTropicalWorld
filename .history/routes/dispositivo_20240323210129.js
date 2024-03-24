@@ -19,7 +19,7 @@ router.get('/', dispositivoController.obtenerDispositivos);
 
 
 
-// actualizaEstadoTemperatura
+
 
 
 module.exports=router;
