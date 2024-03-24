@@ -103,7 +103,7 @@ console.log("musica=>",musica)
 
 exports.actualizaEstadoTemperatura = async (req, res) => {
   try {
-    const { temperatura } = req.params; // Obtener la temperatura de los parámetros de la ruta
+    const { temperatura } = req.body;
 
     // Verificar si la temperatura es un string
     if (typeof temperatura !== 'string') {
@@ -119,28 +119,6 @@ exports.actualizaEstadoTemperatura = async (req, res) => {
     res.status(500).json({ mensaje: 'Error interno del servidor' });
   }
 };
-
-
-// exports.actualizaEstadoTemperatura = async (req, res) => {
-//   try {
-//     const { temperatura } = req.body;
-
-//     // Verificar si la temperatura es un string
-//     if (typeof temperatura !== 'string') {
-//       return res.status(400).json({ mensaje: 'La temperatura debe ser un string' });
-//     }
-
-//     // Actualizar la temperatura en la base de datos
-//     await Dispositivo.findOneAndUpdate({}, { temperatura });
-
-//     res.status(200).json({ mensaje: 'Temperatura actualizada correctamente' });
-//   } catch (error) {
-//     console.error('Error al actualizar la temperatura:', error);
-//     res.status(500).json({ mensaje: 'Error interno del servidor' });
-//   }
-// };
-
-
 
 
 
