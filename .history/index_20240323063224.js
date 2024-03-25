@@ -9,7 +9,7 @@ const cookieParser=require('cookie-parser');
 // conectamos a la base de datos
 conectarDB();
 const corsOptions = {
-    origin: 'https://tropicalworld.vercel.app',  // Reemplaza con la URL de tu aplicación Angular
+    origin: 'http://localhost:4200',  // Reemplaza con la URL de tu aplicación Angular
     credentials: true,
   };
   
