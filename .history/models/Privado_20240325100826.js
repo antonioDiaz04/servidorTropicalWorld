@@ -22,6 +22,7 @@ const AcercaSchema = mongoose.Schema({
   },
 
 
+  
   contenido: {
     type: String,
     default: Date.now(),

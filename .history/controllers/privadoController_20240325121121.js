@@ -74,10 +74,13 @@ exports.getPreguntas = async (req, res) => {
 
 
 
+
+
+  
 exports.actualizarPregunta = async (req, res) => {
   try {
     const { titulo, contenido } = req.body;
-    let pregunta = await Pregunta.findById(req.params.id);
+    let pregunta = await Producto.findById(req.params.id);
     if (!pregunta) {
       res.status(404).json({ msg: 'No existe la pregunta' });
     }
@@ -85,7 +88,7 @@ exports.actualizarPregunta = async (req, res) => {
     pregunta.contenido = contenido;
     // 
 
-    pregunta = await Pregunta.findOneAndUpdate({ _id: req.params.id }, pregunta, { new: true });
+    pregunta = await Producto.findOneAndUpdate({ _id: req.params.id }, pregunta, { new: true });
     res.json(pregunta);
   } catch (error) {
     res.status(500).send('hubo un error');

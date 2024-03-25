@@ -6,9 +6,9 @@ const  privadoController=require('../controllers/privadoController')
 
 
 // pregunta
-router.put('/pregunta/:id', privadoController.actualizarPregunta);
-router.get('pregunta/:id', privadoController.obtenerPregunta);
-router.delete('pregunta/:id', privadoController.eliminarPregunta);
+router.put('/pregunta/:id', productoController.actualizarPregunta);
+router.get('pregunta/:id', productoController.obtenerPregunta);
+router.delete('pregunta/:id', productoController.eliminarPregunta);
 // 
 
 // politicas

@@ -74,10 +74,13 @@ exports.getPreguntas = async (req, res) => {
 
 
 
+
+
+  
 exports.actualizarPregunta = async (req, res) => {
   try {
     const { titulo, contenido } = req.body;
-    let pregunta = await Pregunta.findById(req.params.id);
+    let pregunta = await Producto.findById(req.params.id);
     if (!pregunta) {
       res.status(404).json({ msg: 'No existe la pregunta' });
     }

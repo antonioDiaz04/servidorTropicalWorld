@@ -74,10 +74,13 @@ exports.getPreguntas = async (req, res) => {
 
 
 
+
+
+  
 exports.actualizarPregunta = async (req, res) => {
   try {
     const { titulo, contenido } = req.body;
-    let pregunta = await Pregunta.findById(req.params.id);
+    let pregunta = await Producto.findById(req.params.id);
     if (!pregunta) {
       res.status(404).json({ msg: 'No existe la pregunta' });
     }
@@ -85,7 +88,7 @@ exports.actualizarPregunta = async (req, res) => {
     pregunta.contenido = contenido;
     // 
 
-    pregunta = await Pregunta.findOneAndUpdate({ _id: req.params.id }, pregunta, { new: true });
+    pregunta = await Producto.findOneAndUpdate({ _id: req.params.id }, pregunta, { new: true });
     res.json(pregunta);
   } catch (error) {
     res.status(500).send('hubo un error');
@@ -94,11 +97,11 @@ exports.actualizarPregunta = async (req, res) => {
 
 exports.obtenerPregunta = async (req, res) => {
   try {
-    let pregunta = await Pregunta.findById(req.params.id);
+    let pregunta = await Producto.findById(req.params.id);
     if (!pregunta) {
       res.status(404).json({ msg: 'No existe la pregunta' });
     }
-    pregunta = await Pregunta.findOneAndUpdate({ _id: req.params.id }, pregunta, { new: true });
+    pregunta = await Producto.findOneAndUpdate({ _id: req.params.id }, pregunta, { new: true });
     res.json(pregunta);
   } catch (error) {
     res.status(500).send('hubo un error');
@@ -107,69 +110,14 @@ exports.obtenerPregunta = async (req, res) => {
 
 exports.eliminarPregunta = async (req, res) => {
   try {
-    let pregunta = await Pregunta.findById(req.params.id);
+    let pregunta = await Producto.findById(req.params.id);
 
     if (!pregunta) {
       res.status(404).json({ msg: 'No existe la pregunta' });
     }
     
-    await pregunta.findOneAndDelete({ _id: req.params.id });
-    res.json({ msg: 'pregunta eliminado con exito' });
-    
-  } catch (error) {
-    console.log(error);
-    res.status(500).send('ocurrio un error');
-  }
-}
-
-
-
-
-// politica
-
-
-  
-exports.actualizarPolitica = async (req, res) => {
-  try {
-    const { titulo, contenido } = req.body;
-    let politica = await Politica.findById(req.params.id);
-    if (!politca) {
-      res.status(404).json({ msg: 'No existe la politica' });
-    }
-    politca.titulo = titulo;
-    politica.contenido = contenido;
-    // 
-
-    politica = await Politica.findOneAndUpdate({ _id: req.params.id }, politica, { new: true });
-    res.json(politica);
-  } catch (error) {
-    res.status(500).send('hubo un error');
-  }
-}
-
-exports.obtenerPolitica = async (req, res) => {
-  try {
-    let politica = await Politica.findById(req.params.id);
-    if (!pregunta) {
-      res.status(404).json({ msg: 'No existe la politica' });
-    }
-    poitica = await Politica.findOneAndUpdate({ _id: req.params.id }, potica, { new: true });
-    res.json(politica);
-  } catch (error) {
-    res.status(500).send('hubo un error');
-  }
-}
-
-exports.eliminarPolitica = async (req, res) => {
-  try {
-    let politica = await Politica.findById(req.params.id);
-
-    if (!politica) {
-      res.status(404).json({ msg: 'No existe la politica' });
-    }
-    
-    await politica.findOneAndDelete({ _id: req.params.id });
-    res.json({ msg: 'politica eliminado con exito' });
+    await Producto.findOneAndDelete({ _id: req.params.id });
+    res.json({ msg: 'Producto eliminado con exito' });
     
   } catch (error) {
     console.log(error);

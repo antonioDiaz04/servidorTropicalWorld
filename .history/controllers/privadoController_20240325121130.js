@@ -74,6 +74,9 @@ exports.getPreguntas = async (req, res) => {
 
 
 
+
+
+  
 exports.actualizarPregunta = async (req, res) => {
   try {
     const { titulo, contenido } = req.body;

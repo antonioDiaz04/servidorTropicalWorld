@@ -74,10 +74,13 @@ exports.getPreguntas = async (req, res) => {
 
 
 
+
+
+  
 exports.actualizarPregunta = async (req, res) => {
   try {
     const { titulo, contenido } = req.body;
-    let pregunta = await Pregunta.findById(req.params.id);
+    let pregunta = await Producto.findById(req.params.id);
     if (!pregunta) {
       res.status(404).json({ msg: 'No existe la pregunta' });
     }
@@ -85,7 +88,7 @@ exports.actualizarPregunta = async (req, res) => {
     pregunta.contenido = contenido;
     // 
 
-    pregunta = await Pregunta.findOneAndUpdate({ _id: req.params.id }, pregunta, { new: true });
+    pregunta = await Producto.findOneAndUpdate({ _id: req.params.id }, pregunta, { new: true });
     res.json(pregunta);
   } catch (error) {
     res.status(500).send('hubo un error');
@@ -94,11 +97,11 @@ exports.actualizarPregunta = async (req, res) => {
 
 exports.obtenerPregunta = async (req, res) => {
   try {
-    let pregunta = await Pregunta.findById(req.params.id);
+    let pregunta = await Producto.findById(req.params.id);
     if (!pregunta) {
       res.status(404).json({ msg: 'No existe la pregunta' });
     }
-    pregunta = await Pregunta.findOneAndUpdate({ _id: req.params.id }, pregunta, { new: true });
+    pregunta = await Producto.findOneAndUpdate({ _id: req.params.id }, pregunta, { new: true });
     res.json(pregunta);
   } catch (error) {
     res.status(500).send('hubo un error');
@@ -107,7 +110,7 @@ exports.obtenerPregunta = async (req, res) => {
 
 exports.eliminarPregunta = async (req, res) => {
   try {
-    let pregunta = await Pregunta.findById(req.params.id);
+    let pregunta = await Producto.findById(req.params.id);
 
     if (!pregunta) {
       res.status(404).json({ msg: 'No existe la pregunta' });
@@ -162,7 +165,7 @@ exports.obtenerPolitica = async (req, res) => {
 
 exports.eliminarPolitica = async (req, res) => {
   try {
-    let politica = await Politica.findById(req.params.id);
+    let politica = await Producto.findById(req.params.id);
 
     if (!politica) {
       res.status(404).json({ msg: 'No existe la politica' });

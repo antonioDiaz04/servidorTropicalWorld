@@ -1,20 +1,22 @@
 const express = require("express");
 const router = express.Router();
 
+
+
 const  privadoController=require('../controllers/privadoController')
 
 
 
 // pregunta
-router.put('/pregunta/:id', privadoController.actualizarPregunta);
-router.get('pregunta/:id', privadoController.obtenerPregunta);
-router.delete('pregunta/:id', privadoController.eliminarPregunta);
+router.put('/pregunta/:id', productoController.actualizarPregunta);
+router.get('pregunta/:id', productoController.obtenerPregunta);
+router.delete('pregunta/:id', productoController.eliminarPregunta);
 // 
 
 // politicas
-router.put('/politica/:id', privadoController.actualizarPolitica);
-router.get('/politica/:id', privadoController.obtenerPolitica);
-router.delete('/politica/:id', privadoController.eliminarPolitica);
+router.put('/politica/:id', productoController.actualizarPregunta);
+router.get('/politica/:id', productoController.obtenerPregunta);
+router.delete('politica/:id', productoController.eliminarPregunta);
 // 
 
 
