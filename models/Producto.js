@@ -21,6 +21,13 @@ const ProductoSchema = mongoose.Schema({
     required: true,
   }
   ,
+  
+  imagen:{
+
+    type:String,
+    required: true,
+  }
+  ,
   fechaCreacion: {
     type: Date,
     default: Date.now(),

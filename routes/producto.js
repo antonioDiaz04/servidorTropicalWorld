@@ -3,7 +3,12 @@ const express = require("express");
 const router = express.Router();
 const productoController = require('../controllers/productoController');
 //api/producto
-router.post('/', productoController.crearProducto);
+
+// Importa multerConfig
+const upload  = require('../middlewares/multer');
+// imagesRouter.post('/product', upload.single('imagen'), async (req, res) => {
+router.post('/',upload.single('imagen'), productoController.crearProducto);
+// router.post('/', productoController.crearProducto);
 router.get('/', productoController.obtenerProductos);
 router.get('/:id', productoController.obtenerDetalleProductoById);
 //=================IMAGEN===========
@@ -15,6 +20,7 @@ router.get('/:id', productoController.obtenerDetalleProductoById);
 // .post(deletePhoto)
 // .put(udate)
 // =========================
+
 router.put('/:id', productoController.actualizarProducto);
 router.get('/:id', productoController.obtenerProducto);
 router.delete('/:id', productoController.eliminarProducto);
