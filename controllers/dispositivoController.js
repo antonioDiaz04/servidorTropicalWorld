@@ -100,18 +100,14 @@ console.log("musica=>",musica)
   }
 };
 
+
+
 exports.actualizaEstadoTemperatura = async (req, res) => {
   try {
-    const { temperatura, humedad } = req.params; // Obtener temperatura y humedad de los parámetros de la consulta
+    const { temperatura, humedad } = req.body; // Obtener temperatura y humedad de los parámetros de la consulta
 
-    // Verificar si tanto la temperatura como la humedad son strings
-    if (typeof temperatura !== 'string' || typeof humedad !== 'string') {
-      return res.status(400).json({ mensaje: 'Tanto la temperatura como la humedad deben ser strings' });
-    }
-console.log("putTemp=>",temperatura)
-console.log("putHume=>",humedad)
     // Actualizar la temperatura y la humedad en la base de datos
-    await Dispositivo.findOneAndUpdate({}, { temperatura, humedad });
+    await Dispositivo.findOneAndUpdate({}, { "temperatura": temperatura, "humedad": humedad });
 
     res.status(200).json({ mensaje: 'Datos de temperatura y humedad actualizados correctamente' });
   } catch (error) {
@@ -119,6 +115,7 @@ console.log("putHume=>",humedad)
     res.status(500).json({ mensaje: 'Error interno del servidor' });
   }
 };
+
 
 
 
