@@ -223,7 +223,7 @@ exports.estadoMusica = async (req, res) => {
 
 
 
-exports.estadoTemperatura = async (req, res) => {
+exports.estadoHumedadTemperatura = async (req, res) => {
   try {
 
     
@@ -231,10 +231,10 @@ exports.estadoTemperatura = async (req, res) => {
     const dispositivo = await Dispositivo.findOne().sort({ fechaCreacion: -1 });
 
     // Devolver la temperatura obtenida como respuesta
-    res.status(200).json({ temperatura: dispositivo.temperatura });
+    res.status(200).json({ temperatura: dispositivo.temperatura,humedad: dispositivo.humedad });
   } catch (error) {
 
-    console.error('Error al obtener la temperatura:', error);
+    console.error('Error al obtener la temperatura y  humedad:', error);
     res.status(500).json({ mensaje: 'Error interno del servidor' });
 
   }

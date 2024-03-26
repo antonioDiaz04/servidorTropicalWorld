@@ -1,8 +1,4 @@
 
-
-
-
-  
   // Ruta agregarPolitica
   const { Politica, Pregunta } = require("../models/Privado"); // Assuming models/Privado.js is in the same directory
 
