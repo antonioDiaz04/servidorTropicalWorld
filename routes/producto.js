@@ -11,15 +11,6 @@ router.post('/',upload.single('imagen'), productoController.crearProducto);
 // router.post('/', productoController.crearProducto);
 router.get('/', productoController.obtenerProductos);
 router.get('/:id', productoController.obtenerDetalleProductoById);
-//=================IMAGEN===========
-// router.route('/photos')
-// .get(productoController.obtenerProductos)
-// .post(productoController.crearProducto);
-// router.route('/photos/:id')
-// .get(getPhotos)
-// .post(deletePhoto)
-// .put(udate)
-// =========================
 
 router.put('/:id', productoController.actualizarProducto);
 router.get('/:id', productoController.obtenerProducto);
