@@ -102,7 +102,7 @@ console.log("musica=>",musica)
 
 exports.actualizaEstadoTemperatura = async (req, res) => {
   try {
-    const { temperatura, humedad } = req.query; // Obtener temperatura y humedad de los parámetros de la consulta
+    const { temperatura, humedad } = req.params; // Obtener temperatura y humedad de los parámetros de la consulta
 
     // Verificar si tanto la temperatura como la humedad son strings
     if (typeof temperatura !== 'string' || typeof humedad !== 'string') {
