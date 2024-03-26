@@ -7,7 +7,7 @@ const DispositivoSchema = mongoose.Schema({
     default: Date.now
   },
   temperatura:{
-    type:String ,
+    type:Number ,
     default: Date.now,
 
   },humedad:{
