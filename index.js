@@ -9,10 +9,12 @@ const cookieParser=require('cookie-parser');
 // conectamos a la base de datos
 conectarDB();
 const corsOptions = {
-    origin: 'https://tropicalworld.vercel.app',  // Reemplaza con la URL de tu aplicación Angular
+    origin: 'https://tropicalworld.vercel.app/',  // Reemplaza con la URL de tu aplicación Angular
     credentials: true,
   };
-  
+
+
+
 app.use(cookieParser());
 app.use(cors(corsOptions));
 app.use(bodyParser.json());

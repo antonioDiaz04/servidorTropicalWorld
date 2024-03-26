@@ -102,22 +102,47 @@ console.log("musica=>",musica)
 
 exports.actualizaEstadoTemperatura = async (req, res) => {
   try {
-    const { temperatura } = req.body; // Obtener la temperatura de los parámetros de la ruta
+    const { temperatura, humedad } = req.query; // Obtener temperatura y humedad de los parámetros de la consulta
 
-    // Verificar si la temperatura es un string
-    if (typeof temperatura !== 'string') {
-      return res.status(400).json({ mensaje: 'La temperatura debe ser un string' });
+    // Verificar si tanto la temperatura como la humedad son strings
+    if (typeof temperatura !== 'string' || typeof humedad !== 'string') {
+      return res.status(400).json({ mensaje: 'Tanto la temperatura como la humedad deben ser strings' });
     }
+console.log("putTemp=>",temperatura)
+console.log("putHume=>",humedad)
+    // Actualizar la temperatura y la humedad en la base de datos
+    await Dispositivo.findOneAndUpdate({}, { temperatura, humedad });
 
-    // Actualizar la temperatura en la base de datos
-    await Dispositivo.findOneAndUpdate({}, { "temperatura ":temperatura});
-
-    res.status(200).json({ mensaje: 'Temperatura actualizada correctamente' });
+    res.status(200).json({ mensaje: 'Datos de temperatura y humedad actualizados correctamente' });
   } catch (error) {
-    console.error('Error al actualizar la temperatura:', error);
+    console.error('Error al actualizar los datos de temperatura y humedad:', error);
     res.status(500).json({ mensaje: 'Error interno del servidor' });
   }
 };
+
+
+
+
+
+
+// ! importante exports.actualizaEstadoTemperatura = async (req, res) => {
+//   try {
+//     const { temperatura } = req.body; // Obtener la temperatura de los parámetros de la ruta
+
+//     // Verificar si la temperatura es un string
+//     if (typeof temperatura !== 'string') {
+//       return res.status(400).json({ mensaje: 'La temperatura debe ser un string' });
+//     }
+
+//     // Actualizar la temperatura en la base de datos
+//     await Dispositivo.findOneAndUpdate({}, { "temperatura ":temperatura});
+
+//     res.status(200).json({ mensaje: 'Temperatura actualizada correctamente' });
+//   } catch (error) {
+//     console.error('Error al actualizar la temperatura:', error);
+//     res.status(500).json({ mensaje: 'Error interno del servidor' });
+//   }
+// };
 
 
 
