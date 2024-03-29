@@ -1,6 +1,8 @@
 
+  // Ruta agregarPolitica
   const { Politica, Pregunta } = require("../models/Privado"); // Assuming models/Privado.js is in the same directory
 
+//   const Pregunta = require("../models/Pregunta");
   
 
 exports.agregarPolitica = async (req, res) => {
@@ -23,6 +25,7 @@ exports.agregarPolitica = async (req, res) => {
 
 
 
+exports.getPoliticas = async (req, res) => {
     try {
       const politica = await Politica.find();
       res.json(politica);
@@ -50,6 +53,10 @@ exports.agregarPregunta = async (req, res) => {
   }
 };
 
+// getPoliticas
+
+
+
 
 exports.getPreguntas = async (req, res) => {
     try {
@@ -59,6 +66,8 @@ exports.getPreguntas = async (req, res) => {
       console.log("error");
     }
   }
+
+
 
 
 exports.actualizarPregunta = async (req, res) => {
@@ -108,6 +117,12 @@ exports.eliminarPregunta = async (req, res) => {
     res.status(500).send('ocurrio un error');
   }
 }
+
+
+
+
+// politica
+
 
   
 exports.actualizarPolitica = async (req, res) => {
