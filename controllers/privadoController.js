@@ -1,9 +1,6 @@
 
-  // Ruta agregarPolitica
   const { Politica, Pregunta } = require("../models/Privado"); // Assuming models/Privado.js is in the same directory
 
-//   const Pregunta = require("../models/Pregunta");
-  
 
 exports.agregarPolitica = async (req, res) => {
   try{

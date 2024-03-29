@@ -14,7 +14,7 @@ router.delete('pregunta/:id', privadoController.eliminarPregunta);
 // politicas
 router.put('/politica/:id', privadoController.actualizarPolitica);
 router.get('/politica/:id', privadoController.obtenerPolitica);
-router.delete('/politica/:id', privadoController.eliminarPolitica);
+router.delete('/eliminarPolitica/:id', privadoController.eliminarPolitica);
 // 
 
 
