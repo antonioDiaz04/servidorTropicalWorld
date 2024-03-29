@@ -1,4 +1,5 @@
-const Producto = require("../models/Producto");
+const {Producto,Categoria} = require("../models/Producto");
+// const { Categoria } = require("../models/Categoria"); // Assuming models/Privado.js is in the same directory
 
 const { param } = require("../routes/producto");
 
@@ -161,3 +162,24 @@ exports.eliminarProducto = async (req, res) => {
   }
 }
 
+
+
+// categorias
+
+
+exports.getCategorias=async(req,res)=>{
+  try {
+    
+    const categorias=await Categoria.find()
+  if(!categorias){
+  console.log('error al obtener las categorias');
+  
+  
+  }
+  res.json(categorias)
+  
+  } catch (error) {
+  console.log('error,no se podieron obtener la informacion');
+    
+  }
+  }

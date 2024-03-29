@@ -54,6 +54,8 @@ const ContactoSchema = mongoose.Schema({
 });
 
 
+
+
 module.exports = {
     Politica: mongoose.model("Politica", PoliticaNegocioSchema),
     AcercaDe: mongoose.model("AcercaDe", AcercaSchema),

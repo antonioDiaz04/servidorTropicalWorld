@@ -9,6 +9,7 @@ const upload  = require('../middlewares/multer');
 // imagesRouter.post('/product', upload.single('imagen'), async (req, res) => {
 router.post('/',upload.single('imagen'), productoController.crearProducto);
 // router.post('/', productoController.crearProducto);
+router.get('/obtenerCategorias',productoController.getCategorias)
 router.get('/', productoController.obtenerProductos);
 router.get('/:id', productoController.obtenerDetalleProductoById);
 
