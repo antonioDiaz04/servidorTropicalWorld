@@ -65,7 +65,7 @@ exports.getPreguntas = async (req, res) => {
     } catch {
       console.log("error");
     }
-  }
+  };
 
 
   exports.actualizarPregunta = async (req, res) => {

@@ -12,7 +12,7 @@ router.delete('/eliminarPregunta/:id', privadoController.eliminarPregunta);
 // 
 
 // politicas
-router.put('/politica/:id', privadoController.actualizarPolitica);
+router.put('/politica/:id', privadoController.actualizarPregunta);
 router.get('/politica/:id', privadoController.obtenerPolitica);
 router.delete('/eliminarPolitica/:id', privadoController.eliminarPolitica);
 // 
