@@ -127,14 +127,14 @@ exports.actualizarPolitica = async (req, res) => {
     const { titulo, contenido } = req.body;
     let politica = await Politica.findById(req.params.id);
     if (!politica) {
-      res.status(404).json({ msg: 'No existe la politica' });
+      return   res.status(404).json({ msg: 'No existe la politica' });
     }
     politica.titulo = titulo;
     politica.contenido = contenido;
     // 
 
     politica = await Politica.findOneAndUpdate({ _id: req.params.id }, politica, { new: true });
-    res.json(politica);
+    return res.json(politica);
   } catch (error) {
     res.status(500).send('hubo un error');
   }
