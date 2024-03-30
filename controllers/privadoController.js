@@ -68,25 +68,24 @@ exports.getPreguntas = async (req, res) => {
   }
 
 
-
-
-exports.actualizarPregunta = async (req, res) => {
-  try {
-    const { titulo, contenido } = req.body;
-    let pregunta = await Pregunta.findById(req.params.id);
-    if (!pregunta) {
-      res.status(404).json({ msg: 'No existe la pregunta' });
+  exports.actualizarPregunta = async (req, res) => {
+    try {
+      const { titulo, contenido } = req.body;
+      let pregunta = await Pregunta.findById(req.params.id);
+      if (!pregunta) {
+        return res.status(404).json({ msg: 'No existe la pregunta' }); // Devolver respuesta y salir del controlador
+      }
+      pregunta.titulo = titulo;
+      pregunta.contenido = contenido;
+  
+      pregunta = await Pregunta.findOneAndUpdate({ _id: req.params.id }, pregunta, { new: true });
+      return res.json(pregunta); // Devolver respuesta y salir del controlador
+    } catch (error) {
+      console.error(error);
+      return res.status(500).send('Hubo un error'); // Devolver respuesta y salir del controlador
     }
-    pregunta.titulo = titulo;
-    pregunta.contenido = contenido;
-    // 
-
-    pregunta = await Pregunta.findOneAndUpdate({ _id: req.params.id }, pregunta, { new: true });
-    res.json(pregunta);
-  } catch (error) {
-    res.status(500).send('hubo un error');
-  }
-}
+  };
+  
 
 exports.obtenerPregunta = async (req, res) => {
   try {
