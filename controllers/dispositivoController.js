@@ -259,12 +259,14 @@ exports.crearDispositivo = async (req, res) => {
   try {
     // Crear una nueva instancia de Dispositivo con datos vacíos
      // Obtener los datos del cuerpo de la solicitud
-     const { deviceName, deviceLabel } = req.body;
+    //  const { deviceName, deviceLabel } = req.body;
+
+    // const producto=new Producto()
 
      // Crear una nueva instancia de Dispositivo con los datos proporcionados
      const nuevoDispositivo = new Dispositivo({
-       deviceName: deviceName,
-       deviceLabel: deviceLabel
+       deviceName: req.body.deviceName,
+       deviceLabel: req.body.deviceLabel
      });
  
     // const nuevoDispositivo = new Dispositivo();
@@ -274,7 +276,7 @@ exports.crearDispositivo = async (req, res) => {
     // Enviar una respuesta al cliente con el resultado
     res.status(200).json(resultado);
   } catch (error) {
-    console.error(error);
+    console.error('Error al crear el producto:',error);
     res.status(500).send("Ocurrió un error al guardar el dispositivo");
   }
 };

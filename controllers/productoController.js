@@ -46,15 +46,13 @@ exports.crearProducto = async (req, res) => {
     });
 
     // Guarda el producto en la base de datos
-    await producto.save();
+    // await producto.save();
 
+    const resultadoProducto = await producto.save();
     // Envía una respuesta con el producto creado
     res.status(201).json({ message: 'Producto creado exitosamente', producto });
   
-
-
     // Guarda el producto en la base de datos
-    const resultadoProducto = await producto.save();
 
     // Envía la respuesta con el producto creado
     res.status(201).json(resultadoProducto);
