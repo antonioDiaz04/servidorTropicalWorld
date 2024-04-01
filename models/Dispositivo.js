@@ -1,43 +1,42 @@
 const mongoose = require("mongoose");
+
 const DispositivoSchema = mongoose.Schema({
-
-  led: {
-    type:Number,
-    required: true,
-    default: Date.now
+  deviceName: {
+    type: String,
+    required: true
   },
-  temperatura:{
-    type:Number ,
-    default: Date.now,
-
-  },humedad:{
-    type:Number,
-    default: Date.now
-
-  },musica:{
-type:Number,
-default: Date.now,
-  }
-  ,valancin:{
-    type:Number,
-    default: Date.now,
-      }
-      
-  ,carrucel:{
-    type:Number,
-    default: Date.now,
-      }
-      ,
+  deviceLabel: {
+    type: String,
+    required: true
+  },
+  led: {
+    type: Number,
+    default: null
+  },
+  temperatura: {
+    type: Number,
+    default: null
+  },
+  humedad: {
+    type: Number,
+    default: null
+  },
+  musica: {
+    type: Number,
+    default: 0
+  },
+  valancin: {
+    type: Number,
+    default: 0
+  },
+  carrucel: {
+    type: Number,
+    default: 0
+  },
   fechaCreacion: {
     type: Date,
-    default: Date.now(),
-  },
+    default: Date.now
+  }
 });
 
-
-
-
-
-
-// mongoose.exports = mongoose.model('Producto', ProductoSchema);
 module.exports = mongoose.model('Dispositivo', DispositivoSchema);

@@ -4,6 +4,7 @@ const router = express.Router();
 const dispositivoController = require('../controllers/dispositivoController');
 //api/producto
 // router.put('/cambiarEstadoLed',dispositivoController.actualizaEstadoLed)
+router.post('/crearDispositivo',dispositivoController.crearDispositivo)                            
 router.get('/obtenerEstadoLed',dispositivoController.estadoled)                            
 router.get('/obtenerEstadoValancin',dispositivoController.estadoValancin)
 router.get('/obtenerEstadoCarrucel',dispositivoController.estadoCarrucel)

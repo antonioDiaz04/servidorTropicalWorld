@@ -251,3 +251,30 @@ exports.obtenerDispositivos = async (req, res) => {
 
   }
 }
+
+
+
+
+exports.crearDispositivo = async (req, res) => {
+  try {
+    // Crear una nueva instancia de Dispositivo con datos vacíos
+     // Obtener los datos del cuerpo de la solicitud
+     const { deviceName, deviceLabel } = req.body;
+
+     // Crear una nueva instancia de Dispositivo con los datos proporcionados
+     const nuevoDispositivo = new Dispositivo({
+       deviceName: deviceName,
+       deviceLabel: deviceLabel
+     });
+ 
+    // const nuevoDispositivo = new Dispositivo();
+
+    // Guardar el nuevo dispositivo en la base de datos
+    const resultado = await nuevoDispositivo.save();
+    // Enviar una respuesta al cliente con el resultado
+    res.status(200).json(resultado);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Ocurrió un error al guardar el dispositivo");
+  }
+};
