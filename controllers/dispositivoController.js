@@ -265,8 +265,8 @@ exports.crearDispositivo = async (req, res) => {
 
      // Crear una nueva instancia de Dispositivo con los datos proporcionados
      const nuevoDispositivo = new Dispositivo({
-       deviceName: req.body.deviceName,
-       deviceLabel: req.body.deviceLabel
+       devName: req.body.devName,
+       devLabel: req.body.devLabel
      });
  
     // const nuevoDispositivo = new Dispositivo();
