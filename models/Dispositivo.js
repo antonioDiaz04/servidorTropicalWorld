@@ -33,6 +33,11 @@ const DispositivoSchema = mongoose.Schema({
     type: Number,
     default: 0
   },
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Usuario', // Nombre del modelo de usuario al que se hace referencia
+    required: true
+  },
   fechaCreacion: {
     type: Date,
     default: Date.now

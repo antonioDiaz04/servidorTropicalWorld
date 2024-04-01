@@ -23,6 +23,7 @@ router.put('/actualizaxPregunta',usuarioController.actualizarPasswordxPregunta)
 router.post('/token',usuarioController.BuscaUsuarioByToken)
 
 
+router.get('/buscaUsuarioByCorreo/:correo',usuarioController.buscaUsuarioByCorreo)
 router.post('/correo',usuarioController.BuscaUsuarioByCorreo)
 router.get('/miPerfil/:correo',usuarioController.perfilUsuario)
 router.get('/getUsuarios',usuarioController.obtenerUsuarios)

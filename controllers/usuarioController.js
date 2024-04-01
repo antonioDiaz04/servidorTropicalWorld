@@ -222,6 +222,22 @@ exports.obtenerUsuarioById = async (req, res) => {
 };
 
 
+exports.buscaUsuarioByCorreo = async (req, res) => {
+  try {
+    let usuario = await Usuario.findOne({ correo: req.params.correo }, { _id: 1 });
+    if (usuario) {
+      res.json({ usuarioId: usuario._id });
+    } else {
+      res.json({ msg: 'Usuario no encontrado' });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Error interno del servidor' });
+  }
+};
+
+
+
 
 
 
@@ -409,4 +425,3 @@ exports.eliminarUsuario = async (req, res) => {
     res.status(500).send('ocurrio un error');
   }
 }
-
