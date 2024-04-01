@@ -1,5 +1,6 @@
 const Dispositivo = require("../models/Dispositivo");
 const { param } = require("../routes/dispositivo");
+const mongoose = require('mongoose');
 
 
 exports.actualizaEstadoLed = async (req, res) => {
@@ -279,5 +280,23 @@ exports.crearDispositivo = async (req, res) => {
   } catch (error) {
     console.error('Error al crear el producto:',error);
     res.status(500).send("Ocurrió un error al guardar el dispositivo");
+  }
+};
+
+
+exports.encontrarDispositivosByUsuarioId = async (req, res) => {
+  try {
+    // Obtiene el usuarioId de los parámetros de la URL
+    const usuarioId = req.params.usuarioId;
+
+    // Realiza la búsqueda de dispositivos por el userId proporcionado
+    const dispositivos = await Dispositivo.find({ userId: usuarioId });
+
+    // Devuelve los dispositivos encontrados como respuesta JSON
+    res.json(dispositivos);
+  } catch (error) {
+    // Maneja cualquier error que pueda ocurrir
+    console.error('Error al encontrar dispositivos por usuario ID:', error);
+    res.status(500).json({ error: 'Error al encontrar dispositivos por usuario ID' });
   }
 };

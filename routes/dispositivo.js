@@ -6,6 +6,7 @@ const dispositivoController = require('../controllers/dispositivoController');
 // router.put('/cambiarEstadoLed',dispositivoController.actualizaEstadoLed)
 router.post('/crearDispositivo',dispositivoController.crearDispositivo)                            
 router.get('/obtenerEstadoLed',dispositivoController.estadoled)                            
+router.get('/encontrarDispositivosPorUsuarioId/:usuarioId',dispositivoController.encontrarDispositivosByUsuarioId)                            
 router.get('/obtenerEstadoValancin',dispositivoController.estadoValancin)
 router.get('/obtenerEstadoCarrucel',dispositivoController.estadoCarrucel)
 router.get('/obtenerEstadoMusica',dispositivoController.estadoMusica)
