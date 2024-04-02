@@ -35,7 +35,7 @@ exports.actualizaEstadoLed = async (req, res) => {
 
 exports.actualizaEstadoValancin = async (req, res) => {
   try {
-    const { valancin } = req.body;
+    const { valancin,deviceName } = req.body;
 console.log("valancin=>",valancin)
     // Verificar si led es un número válido (0 o 1)
     if (typeof valancin !== 'number' || (valancin !== 0 && valancin !== 1)) {
@@ -44,7 +44,9 @@ console.log("valancin=>",valancin)
 
     // Actualizar el estado del LED en la base de datos
     await Dispositivo.findOneAndUpdate(
-      { 'valancin' :valancin } // Actualizar el valor del LED con el valor recibido
+      { deviceName: deviceName },
+      {$set: { 'valancin' :valancin,'ultimaActualizacion': new Date() } } , 
+       { new: true }// Actualizar el valor del LED con el valor recibido
     );
 
 //    console.log(req.body);// esto permite mostrar los resultados del json /    res.status(201).json(resultado);
@@ -59,7 +61,7 @@ console.log("valancin=>",valancin)
 
 exports.actualizaEstadoCarrucel = async (req, res) => {
   try {
-    const { carrucel } = req.body;
+    const { carrucel,deviceName } = req.body;
 console.log("carrucel=>",carrucel)
     // Verificar si led es un número válido (0 o 1)
     if (typeof carrucel !== 'number' || (carrucel !== 0 && carrucel !== 1)) {
@@ -68,7 +70,9 @@ console.log("carrucel=>",carrucel)
 
     // Actualizar el estado del LED en la base de datos
     await Dispositivo.findOneAndUpdate(
-      { 'carrucel' :carrucel } // Actualizar el valor del LED con el valor recibido
+      { deviceName: deviceName },
+      { $set:{'carrucel' :carrucel , 'ultimaActualizacion': new Date()}},
+      { new: true } // Actualizar el valor del LED con el valor recibido
     );
 
 //    console.log(req.body);// esto permite mostrar los resultados del json /    res.status(201).json(resultado);
@@ -85,7 +89,7 @@ console.log("carrucel=>",carrucel)
 
 exports.actualizaEstadoMusica = async (req, res) => {
   try {
-    const { musica } = req.body;
+    const { musica , deviceName} = req.body;
 console.log("musica=>",musica)
     // Verificar si led es un número válido (0 o 1)
     if (typeof musica !== 'number' || (musica !== 0 && musica !== 1)) {
@@ -94,7 +98,9 @@ console.log("musica=>",musica)
 
     // Actualizar el estado del LED en la base de datos
     await Dispositivo.findOneAndUpdate(
-      { 'musica' :musica } // Actualizar el valor del LED con el valor recibido
+      { deviceName: deviceName },
+      { $set:{ 'musica' :musica , 'ultimaActualizacion': new Date() } },
+      { new: true } // Actualizar el valor del LED con el valor recibido
     );
 
 //    console.log(req.body);// esto permite mostrar los resultados del json /    res.status(201).json(resultado);
@@ -113,7 +119,7 @@ exports.actualizaEstadoTemperatura = async (req, res) => {
     const { temperatura, humedad } = req.body; // Obtener temperatura y humedad de los parámetros de la consulta
 
     // Actualizar la temperatura y la humedad en la base de datos
-    await Dispositivo.findOneAndUpdate({}, { "temperatura": temperatura, "humedad": humedad });
+    await Dispositivo.findOneAndUpdate({},{ $set:  { "temperatura": temperatura, "humedad": humedad ,'ultimaActualizacion': new Date() } },{ new: true } );
 
     res.status(200).json({ mensaje: 'Datos de temperatura y humedad actualizados correctamente' });
   } catch (error) {
