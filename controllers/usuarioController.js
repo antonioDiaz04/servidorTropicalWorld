@@ -339,14 +339,11 @@ exports.actualizarPasswordxCorreo = async (req, res) => {
       return res.status(400).json({ message: 'La nueva contraseña es inválida' });
     }
 
-    // Encripta la nueva contraseña
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(nuevaPassword, salt);
 
-    // Busca el usuario por correo y token
     const usuario = await Usuario.findOne({ correo: correo, token: token });
 
-    // Si no se encuentra el usuario, devuelve un mensaje de error
     if (!usuario) {
       return res.status(404).json({ message: "Usuario no encontrado" });
     }
