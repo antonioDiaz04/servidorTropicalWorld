@@ -7,10 +7,10 @@ const dispositivoController = require('../controllers/dispositivoController');
 router.post('/crearDispositivo',dispositivoController.crearDispositivo)                            
 router.get('/obtenerEstadoLed/:deviceName',dispositivoController.estadoled)                            
 router.get('/encontrarDispositivosPorUsuarioId/:usuarioId',dispositivoController.encontrarDispositivosByUsuarioId)                            
-router.get('/obtenerEstadoValancin',dispositivoController.estadoValancin)
-router.get('/obtenerEstadoCarrucel',dispositivoController.estadoCarrucel)
-router.get('/obtenerEstadoMusica',dispositivoController.estadoMusica)
-router.get('/obtenerEstadoTemperaturaHumedad',dispositivoController.estadoHumedadTemperatura)
+router.get('/obtenerEstadoValancin/:deviceName',dispositivoController.estadoValancin)
+router.get('/obtenerEstadoCarrucel/:deviceName',dispositivoController.estadoCarrucel)
+router.get('/obtenerEstadoMusica/:deviceName',dispositivoController.estadoMusica)
+router.get('/obtenerEstadoTemperaturaHumedad/:deviceName',dispositivoController.estadoHumedadTemperatura)
 router.put('/cambiarEstadoLed', dispositivoController.actualizaEstadoLed);
 router.put('/cambiarEstadoCarrucel', dispositivoController.actualizaEstadoCarrucel);
 router.put('/cambiarEstadoValancin', dispositivoController.actualizaEstadoValancin);
