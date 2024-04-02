@@ -15,11 +15,11 @@ const DispositivoSchema = mongoose.Schema({
   },
   temperatura: {
     type: Number,
-    default: 0
+    default: null
   },
   humedad: {
     type: Number,
-    default: 0
+    default: null
   },
   musica: {
     type: Number,
@@ -41,17 +41,7 @@ const DispositivoSchema = mongoose.Schema({
   fechaCreacion: {
     type: Date,
     default: Date.now
-  },
-  ultimaActualizacion: {
-    type: Date,
-    default: Date.now // Inicializa con la fecha y hora actual
   }
-});
-
-// Middleware que se ejecutará antes de guardar un documento
-DispositivoSchema.pre('save', function(next) {
-  this.ultimaActualizacion = new Date();  // Actualiza con la fecha y hora actual antes de guardar
-  next();
 });
 
 module.exports = mongoose.model('Dispositivo', DispositivoSchema);
