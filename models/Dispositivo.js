@@ -1,3 +1,5 @@
+const mongoose = require("mongoose");
+
 const DispositivoSchema = mongoose.Schema({
   deviceName: {
     type: String,
