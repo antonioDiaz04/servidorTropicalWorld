@@ -1,6 +1,7 @@
 const Dispositivo = require("../models/Dispositivo");
 const { param } = require("../routes/dispositivo");
 const mongoose = require('mongoose');
+// const { deviceName } = req.params;
 
 
 exports.actualizaEstadoLed = async (req, res) => {
@@ -128,80 +129,90 @@ exports.actualizaEstadoTemperatura = async (req, res) => {
   }
 };
 
-// Endpoint para obtener el estad
-exports.estadoled = async (req, res) => {
-    try {
-        // Consultar el estado actual del LED en la base de datos
-        const dispositivo = await Dispositivo.findOne().sort({ fechaCreacion: -1 });
+// // Endpoint para obtener el estad
+// exports.estadoled = async (req, res) => {
+//     try {
+//         // Consultar el estado actual del LED en la base de datos
+//         const dispositivo = await Dispositivo.findOne().sort({ fechaCreacion: -1 });
 
-        // Devolver solo el estado del LED como respuesta
-        res.send(dispositivo.led.toString());
-    } catch (error) {
-        console.error('Error al obtener el estado del LED:', error);
-        res.status(500).send('Error al obtener el estado del LED');
-    }
+//         // Devolver solo el estado del LED como respuesta
+//         res.send(dispositivo.led.toString());
+//     } catch (error) {
+//         console.error('Error al obtener el estado del LED:', error);
+//         res.status(500).send('Error al obtener el estado del LED');
+//     }
+// };
+// Endpoint para obtener el estado del LED para un dispositivo específico
+exports.estadoled = async (req, res) => {
+  try {
+const { deviceName } = req.params;
+
+      // const { deviceName } = req.params;
+
+      // Consultar el estado actual del LED en la base de datos para el dispositivo especificado
+      const dispositivo = await Dispositivo.findOne({ deviceName });
+
+      if (!dispositivo) {
+          return res.status(404).send('Dispositivo no encontrado');
+      }
+
+      // Devolver solo el estado del LED como respuesta
+      res.send(dispositivo.led.toString());
+  } catch (error) {
+      console.error('Error al obtener el estado del LED:', error);
+      res.status(500).send('Error al obtener el estado del LED');
+  }
 };
 
 
 
 exports.estadoValancin = async (req, res) => {
-    try {
-        
-        const dispositivo = await Dispositivo.findOne().sort({ led: -1 });
-
-        res.send(dispositivo.valancin.toString());
-    } catch (error) {
-        console.error('Error al obtener el estado del Valancin:', error);
-        res.status(500).send('Error al obtener el estado del valancin');
-    }
-};
-
-
-exports.estadoCarrucel = async (req, res) => {
-    try {
-        
-        const dispositivo = await Dispositivo.findOne().sort({ valancin: -1 });
-
-        res.send(dispositivo.carrucel.toString());
-    } catch (error) {
-        console.error('Error al obtener el estado del Carrucel:', error);
-        res.status(500).send('Error al obtener el estado del Carrucel');
-    }
-};
-
-exports.estadoMusica = async (req, res) => {
-    try {
-        
-        const dispositivo = await Dispositivo.findOne().sort({ carrucel: -1 });
-
-        res.send(dispositivo.musica.toString());
-    } catch (error) {
-        console.error('Error al obtener el estado del musica:', error);
-        res.status(500).send('Error al obtener el estado del musica');
-    }
-};
-
-
-
-
-exports.estadoHumedadTemperatura = async (req, res) => {
   try {
+const { deviceName } = req.params;
 
-    
-    // Consultar la temperatura más reciente en la base de datos
-    const dispositivo = await Dispositivo.findOne().sort({ fechaCreacion: -1 });
-
-    // Devolver la temperatura obtenida como respuesta
-    res.status(200).json({ temperatura: dispositivo.temperatura,humedad: dispositivo.humedad });
+      const dispositivo = await Dispositivo.findOne({ deviceName }).sort({ led: -1 });
+      res.send(dispositivo.valancin.toString());
   } catch (error) {
-
-    console.error('Error al obtener la temperatura y  humedad:', error);
-    res.status(500).json({ mensaje: 'Error interno del servidor' });
-
+      console.error('Error al obtener el estado del Valancin:', error);
+      res.status(500).send('Error al obtener el estado del valancin');
   }
 };
 
+exports.estadoCarrucel = async (req, res) => {
+  try {
+const { deviceName } = req.params;
 
+      const dispositivo = await Dispositivo.findOne({ deviceName }).sort({ valancin: -1 });
+      res.send(dispositivo.carrucel.toString());
+  } catch (error) {
+      console.error('Error al obtener el estado del Carrucel:', error);
+      res.status(500).send('Error al obtener el estado del Carrucel');
+  }
+};
+
+exports.estadoMusica = async (req, res) => {
+  try {
+const { deviceName } = req.params;
+
+      const dispositivo = await Dispositivo.findOne({ deviceName }).sort({ carrucel: -1 });
+      res.send(dispositivo.musica.toString());
+  } catch (error) {
+      console.error('Error al obtener el estado del musica:', error);
+      res.status(500).send('Error al obtener el estado del musica');
+  }
+};
+
+exports.estadoHumedadTemperatura = async (req, res) => {
+  try {
+const { deviceName } = req.params;
+
+      const dispositivo = await Dispositivo.findOne({ deviceName }).sort({ fechaCreacion: -1 });
+      res.status(200).json({ temperatura: dispositivo.temperatura, humedad: dispositivo.humedad });
+  } catch (error) {
+      console.error('Error al obtener la temperatura y humedad:', error);
+      res.status(500).json({ mensaje: 'Error interno del servidor' });
+  }
+};
 exports.obtenerDispositivos = async (req, res) => {
   try {
     const dispositivos = await Dispositivo.find();
