@@ -5,32 +5,33 @@ const mongoose = require('mongoose');
 
 exports.actualizaEstadoLed = async (req, res) => {
   try {
+    const { led, deviceName } = req.body;
+    console.log("led=>", led);
+    console.log("deviceName=>", deviceName);
 
-
-    const { led,deviceName } = req.body;
-    console.log("led=>",led)
-    console.log("deviceName=>",deviceName)
     // Verificar si led es un número válido (0 o 1)
     if (typeof led !== 'number' || (led !== 0 && led !== 1)) {
       return res.status(400).json({ mensaje: 'El valor de LED debe ser 0 o 1' });
     }
 
-
-    
     // Actualizar el estado del LED en la base de datos
-    await Dispositivo.findOneAndUpdate(
-      { 'led' :led ,'deviceName':deviceName},{ $set: { 'led': led } }, // Objeto de actualización
-      { new: true }   // Actualizar el valor del LED con el valor recibido
+    const dispositivoActualizado = await Dispositivo.findOneAndUpdate(
+      { deviceName: deviceName }, // Filtro para encontrar el dispositivo por su nombre
+      { $set: { 'led': led, 'ultimaActualizacion': new Date() } }, // Objeto de actualización
+      { new: true } // Devuelve el documento actualizado
     );
 
-//    console.log(req.body);// esto permite mostrar los resultados del json /    res.status(201).json(resultado);
-  
-    res.status(200).json({ mensaje: 'Estado del LED actualizado correctamente del dispositivo'+deviceName});
+    if (!dispositivoActualizado) {
+      return res.status(404).json({ mensaje: 'Dispositivo no encontrado' });
+    }
+
+    res.status(200).json({ mensaje: 'Estado del LED actualizado correctamente del dispositivo ' + deviceName });
   } catch (error) {
     console.error('Error al actualizar el estado del LED:', error);
     res.status(500).json({ mensaje: 'Error interno del servidor' });
   }
 };
+
 
 exports.actualizaEstadoValancin = async (req, res) => {
   try {
