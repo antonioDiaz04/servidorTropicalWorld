@@ -13,6 +13,7 @@ const usuarioController=require('../controllers/usuarioController');
 
 router.get('/admin',usuarioController.adminRoute);
 router.get('/cliente',usuarioController.clienteRoute);
+router.get('/getPreguntasSecretas',usuarioController.getPreguntasSecretas);
 
 
 router.delete('/:id', usuarioController.eliminarUsuario);

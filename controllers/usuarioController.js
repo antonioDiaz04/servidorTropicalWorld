@@ -1,5 +1,5 @@
-const Usuario = require("../models/Usuario");
-const { param } = require("../routes/usuario");
+const {Usuario,PreguntaSecretas} = require("../models/Usuario");
+require("../routes/usuario");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
@@ -8,7 +8,7 @@ const bcrypt = require("bcryptjs");
 exports.Login = async (req, res) => {
   try {
     const { correo, password } = req.body;
-
+// eslint-disable-next-line no-console
     const usuario = await Usuario.findOne({ correo });
 
     if (!usuario) return res.status(401).send("El correo no existe");
@@ -425,3 +425,24 @@ exports.eliminarUsuario = async (req, res) => {
     res.status(500).send('ocurrio un error');
   }
 }
+
+exports.getPreguntasSecretas = async (req, res) => {
+  try {
+    // Obtener todas las preguntas secretas
+    const preguntas = await PreguntaSecretas.find();
+
+    // Verificar si se obtuvieron preguntas
+    if (preguntas.length === 0) {
+      // No se encontraron preguntas
+      console.log('No se encontraron preguntas secretas');
+      return res.status(404).json({ error: 'No se encontraron preguntas secretas' });
+    }
+
+    // Devolver las preguntas como respuesta JSON
+    res.json(preguntas);
+  } catch (error) {
+    // Manejar errores
+    console.error('Error al obtener las preguntas secretas:', error);
+    res.status(500).json({ error: 'Error al obtener las preguntas secretas' });
+  }
+};

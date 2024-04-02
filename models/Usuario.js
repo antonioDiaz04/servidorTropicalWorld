@@ -1,5 +1,9 @@
 const mongoose = require("mongoose");
-
+const PreguntaSecretaSchema=mongoose.Schema({
+  pregunta:{
+  type:String,
+  }
+  })
 const UsuarioSchema = mongoose.Schema({
   nombre: {
     type: String,
@@ -44,4 +48,9 @@ const UsuarioSchema = mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Usuario", UsuarioSchema);
+module.exports = {
+ Usuario: mongoose.model("Usuario", UsuarioSchema),
+ PreguntaSecretas:mongoose.model("PreguntaSecretas", PreguntaSecretaSchema),
+};
+
+

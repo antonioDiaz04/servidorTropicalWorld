@@ -5,8 +5,11 @@ const mongoose = require('mongoose');
 
 exports.actualizaEstadoLed = async (req, res) => {
   try {
-    const { led } = req.body;
+
+
+    const { led,deviceName } = req.body;
 console.log("led=>",led)
+console.log("deviceName=>",deviceName)
     // Verificar si led es un número válido (0 o 1)
     if (typeof led !== 'number' || (led !== 0 && led !== 1)) {
       return res.status(400).json({ mensaje: 'El valor de LED debe ser 0 o 1' });
@@ -16,7 +19,8 @@ console.log("led=>",led)
     
     // Actualizar el estado del LED en la base de datos
     await Dispositivo.findOneAndUpdate(
-      { 'led' :led } // Actualizar el valor del LED con el valor recibido
+      { 'led' :led ,'deviceName':deviceName},{ $set: { 'led': led } }, // Objeto de actualización
+      { new: true }   // Actualizar el valor del LED con el valor recibido
     );
 
 //    console.log(req.body);// esto permite mostrar los resultados del json /    res.status(201).json(resultado);
@@ -116,57 +120,6 @@ exports.actualizaEstadoTemperatura = async (req, res) => {
     res.status(500).json({ mensaje: 'Error interno del servidor' });
   }
 };
-
-
-
-
-
-
-
-// ! importante exports.actualizaEstadoTemperatura = async (req, res) => {
-//   try {
-//     const { temperatura } = req.body; // Obtener la temperatura de los parámetros de la ruta
-
-//     // Verificar si la temperatura es un string
-//     if (typeof temperatura !== 'string') {
-//       return res.status(400).json({ mensaje: 'La temperatura debe ser un string' });
-//     }
-
-//     // Actualizar la temperatura en la base de datos
-//     await Dispositivo.findOneAndUpdate({}, { "temperatura ":temperatura});
-
-//     res.status(200).json({ mensaje: 'Temperatura actualizada correctamente' });
-//   } catch (error) {
-//     console.error('Error al actualizar la temperatura:', error);
-//     res.status(500).json({ mensaje: 'Error interno del servidor' });
-//   }
-// };
-
-
-
-// exports.actualizaEstadoTemperatura = async (req, res) => {
-//   try {
-//     const { temperatura } = req.body;
-
-//     // Verificar si la temperatura es un string
-//     if (typeof temperatura !== 'string') {
-//       return res.status(400).json({ mensaje: 'La temperatura debe ser un string' });
-//     }
-
-//     // Actualizar la temperatura en la base de datos
-//     await Dispositivo.findOneAndUpdate({}, { temperatura });
-
-//     res.status(200).json({ mensaje: 'Temperatura actualizada correctamente' });
-//   } catch (error) {
-//     console.error('Error al actualizar la temperatura:', error);
-//     res.status(500).json({ mensaje: 'Error interno del servidor' });
-//   }
-// };
-
-
-
-
-
 
 // Endpoint para obtener el estad
 exports.estadoled = async (req, res) => {
