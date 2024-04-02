@@ -11,15 +11,15 @@ const DispositivoSchema = mongoose.Schema({
   },
   led: {
     type: Number,
-    default: null
+    default: 0
   },
   temperatura: {
     type: Number,
-    default: null
+    default: 0
   },
   humedad: {
     type: Number,
-    default: null
+    default: 0
   },
   musica: {
     type: Number,

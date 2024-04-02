@@ -25,7 +25,7 @@ exports.actualizaEstadoLed = async (req, res) => {
 
 //    console.log(req.body);// esto permite mostrar los resultados del json /    res.status(201).json(resultado);
   
-    res.status(200).json({ mensaje: 'Estado del LED actualizado correctamente del dispositivo', deviceName});
+    res.status(200).json({ mensaje: 'Estado del LED actualizado correctamente del dispositivo'+deviceName});
   } catch (error) {
     console.error('Error al actualizar el estado del LED:', error);
     res.status(500).json({ mensaje: 'Error interno del servidor' });
