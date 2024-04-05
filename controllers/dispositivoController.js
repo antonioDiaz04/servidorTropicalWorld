@@ -271,3 +271,20 @@ exports.encontrarDispositivosByUsuarioId = async (req, res) => {
     res.status(500).json({ error: 'Error al encontrar dispositivos por usuario ID' });
   }
 };
+
+exports.obtenerEstadoDispositivo = async (req, res) => {
+  try {
+    // Obtiene el usuarioId de los parámetros de la URL
+    const deviceName = req.params.deviceName;
+
+    // Realiza la búsqueda de dispositivos por el userId proporcionado
+    const respuesta = await Dispositivo.findOne({ deviceName:deviceName });
+
+    // Devuelve los dispositivos encontrados como respuesta JSON
+    res.json(respuesta);
+  } catch (error) {
+    // Maneja cualquier error que pueda ocurrir
+    console.error('Error al encontrar dispositivos por usuario ID:', error);
+    res.status(500).json({ error: 'Error al encontrar dispositivos por usuario ID' });
+  }
+};
