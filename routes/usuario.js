@@ -11,9 +11,10 @@ const usuarioController=require('../controllers/usuarioController');
 
 // proteccion de rutas
 
+// router.get('/traerQuestiones',privadoController.getquestiones) 
 router.get('/admin',usuarioController.adminRoute);
 router.get('/cliente',usuarioController.clienteRoute);
-router.get('/getPreguntasSecretas',usuarioController.getPreguntasSecretas);
+router.get('/getPreguntasSecretas',usuarioController.listarSecretas);
 
 
 router.delete('/:id', usuarioController.eliminarUsuario);

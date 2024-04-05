@@ -1,6 +1,6 @@
 
   // Ruta agregarPolitica
-  const { Politica, Pregunta } = require("../models/Privado"); // Assuming models/Privado.js is in the same directory
+const { Politica, Pregunta} = require("../models/Privado"); // Assuming models/Privado.js is in the same directory
 
 //   const Pregunta = require("../models/Pregunta");
   
@@ -25,6 +25,7 @@ exports.agregarPolitica = async (req, res) => {
 
 
 
+
 exports.getPoliticas = async (req, res) => {
     try {
       const politica = await Politica.find();
@@ -33,8 +34,9 @@ exports.getPoliticas = async (req, res) => {
       console.log("error");
     }
   }
-
-
+  // 
+  // 
+ 
   
 exports.agregarPregunta = async (req, res) => {
   try{

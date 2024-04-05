@@ -50,7 +50,7 @@ const UsuarioSchema = mongoose.Schema({
 
 module.exports = {
  Usuario: mongoose.model("Usuario", UsuarioSchema),
- PreguntaSecretas:mongoose.model("PreguntaSecretas", PreguntaSecretaSchema),
+ PreguntasSecretas:mongoose.model("PreguntasSecretas", PreguntaSecretaSchema),
 };
 
 

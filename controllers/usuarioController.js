@@ -1,4 +1,4 @@
-const {Usuario,PreguntaSecretas} = require("../models/Usuario");
+const {Usuario,PreguntasSecretas} = require("../models/Usuario");
 require("../routes/usuario");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
@@ -423,17 +423,17 @@ exports.eliminarUsuario = async (req, res) => {
   }
 }
 
-exports.getPreguntasSecretas = async (req, res) => {
+exports.listarSecretas = async (req, res) => {
   try {
     // Obtener todas las preguntas secretas
-    const preguntas = await PreguntaSecretas.find();
+    const preguntas = await PreguntasSecretas.find();
 
-    // Verificar si se obtuvieron preguntas
-    if (preguntas.length === 0) {
-      // No se encontraron preguntas
-      console.log('No se encontraron preguntas secretas');
-      return res.status(404).json({ error: 'No se encontraron preguntas secretas' });
-    }
+    // // Verificar si se obtuvieron preguntas
+    // if (preguntas.length === 0) {
+    //   // No se encontraron preguntas
+    //   console.log('No se encontraron preguntas secretas');
+    //   return res.status(404).json({ error: 'No se encontraron preguntas secretas' });
+    // }
 
     // Devolver las preguntas como respuesta JSON
     res.json(preguntas);
@@ -443,3 +443,23 @@ exports.getPreguntasSecretas = async (req, res) => {
     res.status(500).json({ error: 'Error al obtener las preguntas secretas' });
   }
 };
+
+
+
+
+
+
+// exports.obtenerPreguntasSecretas = async (req, res) => {
+
+
+//   console.log("Preguntas secretas encontradas:"); // Agregamos este console.log para verificar las preguntas secretas encontradas
+
+//   try {
+//     const question = await PreguntasSecretas.find();
+//     console.log("Preguntas secretas encontradas:", question); // Agregamos este console.log para verificar las preguntas secretas encontradas
+//     res.json(question);
+//   } catch (error) {
+//     console.error("Error al obtener las preguntas secretas:", error);
+//     res.status(500).json({ error: "Error interno del servidor" });
+//   }
+// }

@@ -41,6 +41,7 @@ const PreguntaSchema = mongoose.Schema({
     default: Date.now(),
   },
 });
+
 const ContactoSchema = mongoose.Schema({
 
   titulo: {
