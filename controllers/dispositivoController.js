@@ -306,3 +306,43 @@ exports.eliminarDispositivo = async (req, res) => {
     res.status(500).send('ocurrio un error');
   }
 }
+
+
+// actualizarProducto
+
+exports.editarDispositivo = async (req, res) => {
+  
+ 
+  try {
+    const { deviceName, deviceLabel } = req.body;
+    let dispositivo = await Dispositivo.findById(req.params.id);
+    if (!dispositivo) {
+      res.status(404).json({ msg: 'No existe el producto' });
+    }
+
+
+
+    dispositivo.deviceName = deviceName;
+    dispositivo.deviceLabel = deviceLabel;
+    
+    dispositivo = await Dispositivo.findOneAndUpdate({ _id: req.params.id }, producto, { new: true });
+    res.json(dispositivo);
+  } catch (error) {
+    res.status(500).send('hubo un error');
+  }
+}
+
+
+
+exports.obtenerDispositivo = async (req, res) => {
+  try {
+    let dispositivo = await Dispositivo.findById(req.params.id);
+    if (!dispositivo) {
+      res.status(404).json({ msg: 'No existe la dispositivo' });
+    }
+    dispositivo = await Dispositivo.findOneAndUpdate({ _id: req.params.id }, dispositivo, { new: true });
+    res.json(dispositivo);
+  } catch (error) {
+    res.status(500).send('hubo un error');
+  }
+}
