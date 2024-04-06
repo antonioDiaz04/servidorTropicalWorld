@@ -309,30 +309,36 @@ exports.eliminarDispositivo = async (req, res) => {
 
 
 // actualizarProducto
-
 exports.editarDispositivo = async (req, res) => {
-  
- 
   try {
-    
-    const { deviceName, deviceLabel ,usuarioId} = req.body;
-    let dispositivo = await Dispositivo.findById(req.params.id);
-    if (!dispositivo) {
-      res.status(404).json({ msg: 'No existe el producto' });
+    const { deviceName, deviceLabel } = req.body;
+
+    // Verificar si se proporcionaron tanto el nombre del dispositivo como la etiqueta
+    if (!deviceName || !deviceLabel) {
+      return res.status(400).json({ msg: 'El nombre del dispositivo y la etiqueta son obligatorios' });
     }
 
+    // Buscar el dispositivo por su ID
+    let dispositivo = await Dispositivo.findById(req.params.id);
+    if (!dispositivo) {
+      return res.status(404).json({ msg: 'No existe el dispositivo' });
+    }
 
-
+    // Actualizar solo el nombre del dispositivo y la etiqueta
     dispositivo.deviceName = deviceName;
     dispositivo.deviceLabel = deviceLabel;
-    dispositivo.usuarioId = usuarioId;
-    
-    dispositivo = await Dispositivo.findOneAndUpdate({ _id: req.params.id }, producto, { new: true });
+
+    // Guardar los cambios en la base de datos
+    await dispositivo.save();
+
+    // Devolver la respuesta con el dispositivo actualizado
     res.json(dispositivo);
   } catch (error) {
-    res.status(500).send('hubo un error');
+    console.error(error);
+    res.status(500).send('Hubo un error');
   }
-}
+};
+
 
 
 
