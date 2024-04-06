@@ -314,7 +314,8 @@ exports.editarDispositivo = async (req, res) => {
   
  
   try {
-    const { deviceName, deviceLabel } = req.body;
+    
+    const { deviceName, deviceLabel ,usuarioId} = req.body;
     let dispositivo = await Dispositivo.findById(req.params.id);
     if (!dispositivo) {
       res.status(404).json({ msg: 'No existe el producto' });
@@ -324,6 +325,7 @@ exports.editarDispositivo = async (req, res) => {
 
     dispositivo.deviceName = deviceName;
     dispositivo.deviceLabel = deviceLabel;
+    dispositivo.usuarioId = usuarioId;
     
     dispositivo = await Dispositivo.findOneAndUpdate({ _id: req.params.id }, producto, { new: true });
     res.json(dispositivo);
