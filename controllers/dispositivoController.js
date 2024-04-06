@@ -288,3 +288,21 @@ exports.obtenerEstadoDispositivo = async (req, res) => {
     res.status(500).json({ error: 'Error al encontrar dispositivos por usuario ID' });
   }
 };
+
+
+exports.eliminarDispositivo = async (req, res) => {
+  try {
+    let dispositivo = await Dispositivo.findById(req.params.id);
+
+    if (!dispositivo) {
+      res.status(404).json({ msg: 'No existe el dispositivo' });
+    }
+    
+    await Dispositivo.findOneAndDelete({ _id: req.params.id });
+    res.json({ msg: 'Dispositivo eliminado con exito' });
+    
+  } catch (error) {
+    console.log(error);
+    res.status(500).send('ocurrio un error');
+  }
+}

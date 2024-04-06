@@ -5,6 +5,7 @@ const dispositivoController = require('../controllers/dispositivoController');
 //api/producto
 // router.put('/cambiarEstadoLed',dispositivoController.actualizaEstadoLed)
 router.post('/crearDispositivo',dispositivoController.crearDispositivo)                            
+router.delete('/eliminarDispositivo/:id',dispositivoController.eliminarDispositivo)                            
 router.get('/obtenerEstadoDispositivo/:deviceName',dispositivoController.obtenerEstadoDispositivo)                            
 router.get('/obtenerEstadoLed/:deviceName',dispositivoController.estadoled)                            
 router.get('/encontrarDispositivosPorUsuarioId/:usuarioId',dispositivoController.encontrarDispositivosByUsuarioId)                            
