@@ -15,7 +15,7 @@ const usuarioController=require('../controllers/usuarioController');
 router.get('/admin',usuarioController.adminRoute);
 router.get('/cliente',usuarioController.clienteRoute);
 router.get('/getPreguntasSecretas',usuarioController.listarSecretas);
-
+router.put('/actualizaRol/:id',usuarioController.actualizaRolUsuario);
 
 router.delete('/:id', usuarioController.eliminarUsuario);
 
