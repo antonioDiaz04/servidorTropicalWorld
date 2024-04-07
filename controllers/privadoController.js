@@ -133,13 +133,13 @@ exports.actualizarPolitica = async (req, res) => {
     }
     politica.titulo = titulo;
     politica.contenido = contenido;
-    // 
 
     politica = await Politica.findOneAndUpdate({ _id: req.params.id }, politica, { new: true });
     return res.json(politica);
   } catch (error) {
     res.status(500).send('hubo un error');
   }
+  
 }
 
 exports.obtenerPolitica = async (req, res) => {

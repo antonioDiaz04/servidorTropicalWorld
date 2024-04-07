@@ -2,9 +2,7 @@
 const nodemailer = require('nodemailer');
 const crypto = require('crypto');
 const token = crypto.randomBytes(3).toString('hex').toUpperCase();
-
-const Usuario = require("../models/Usuario");
-
+const { Usuario } = require("../models/Usuario");
 const transporter = nodemailer.createTransport({
      host: "smtp.gmail.com",
   port: 465,
@@ -19,12 +17,7 @@ const transporter = nodemailer.createTransport({
 exports.enviarCorreoycuerpo= async(req, res) => {
     const correo =await req.body.correo; // Extraer el correo electrónico del cuerpo de la solicitud
     // const token = crypto.randomBytes(3).toString('hex').toUpperCase();
-  
-  
     Usuario.updateOne({ correo: correo }, { $set: { token: token } })
-
-
-
 
   .then(result => {
     console.log(`Se actualizó el token para el usuario con correo ${correo}`);
