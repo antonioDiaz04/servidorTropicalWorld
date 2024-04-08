@@ -183,6 +183,31 @@ exports.crearUsuario = async (req, res) => {
     });
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
     const resultado = await usuario.save();
     const { _id } = await resultado.toJSON();
     const token = jwt.sign({ _id: _id }, "secret");
