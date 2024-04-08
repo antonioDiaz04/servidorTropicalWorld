@@ -14,11 +14,11 @@ const DispositivoSchema = mongoose.Schema({
   },
   temperatura: {
     type: Number,
-    default: null
+    default: 0.0
   },
   humedad: {
     type: Number,
-    default: null
+    default: 0.0
   },
   musica: {
     type: Number,
