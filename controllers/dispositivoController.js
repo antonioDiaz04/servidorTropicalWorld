@@ -117,10 +117,12 @@ console.log("musica=>",musica)
 
 exports.actualizaEstadoTemperatura = async (req, res) => {
   try {
+const { deviceName } = req.params;
+
     const { temperatura, humedad } = req.body; // Obtener temperatura y humedad de los parámetros de la consulta
 
     // Actualizar la temperatura y la humedad en la base de datos
-    await Dispositivo.findOneAndUpdate({},{ $set:  { "temperatura": temperatura, "humedad": humedad ,'ultimaActualizacion': new Date() } },{ new: true } );
+    await Dispositivo.findOneAndUpdate({deviceName},{ $set:  { "temperatura": temperatura, "humedad": humedad ,'ultimaActualizacion': new Date() } },{ new: true } );
 
     res.status(200).json({ mensaje: 'Datos de temperatura y humedad actualizados correctamente' });
   } catch (error) {

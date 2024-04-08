@@ -20,6 +20,7 @@ app.use(cookieParser());
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
+
 // Rutas
 app.use('/correo', require('./routes/mensaje'));
 app.use('/comentarios', require('./routes/comentario'));

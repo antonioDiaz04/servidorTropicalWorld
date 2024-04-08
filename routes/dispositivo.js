@@ -19,7 +19,7 @@ router.put('/cambiarEstadoCarrucel', dispositivoController.actualizaEstadoCarruc
 router.put('/cambiarEstadoValancin', dispositivoController.actualizaEstadoValancin);
 router.put('/editar/:id', dispositivoController.editarDispositivo);
 router.put('/cambiarEstadoMusica', dispositivoController.actualizaEstadoMusica);
-router.put('/guardar_datos', dispositivoController.actualizaEstadoTemperatura);
+router.put('/guardar_datos/:deviceName', dispositivoController.actualizaEstadoTemperatura);
 router.get('/', dispositivoController.obtenerDispositivos);
 
 
