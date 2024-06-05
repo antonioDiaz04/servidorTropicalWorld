@@ -231,13 +231,7 @@ exports.obtenerDispositivos = async (req, res) => {
 
 exports.crearDispositivo = async (req, res) => {
   try {
-    // Crear una nueva instancia de Dispositivo con datos vacíos
-     // Obtener los datos del cuerpo de la solicitud
-    //  const { deviceName, deviceLabel } = req.body;
-
-    // const producto=new Producto()
-
-     // Crear una nueva instancia de Dispositivo con los datos proporcionados
+    
      const nuevoDispositivo = new Dispositivo({
        deviceName: req.body.deviceName,
        deviceLabel: req.body.deviceLabel,

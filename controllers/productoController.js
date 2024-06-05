@@ -130,6 +130,9 @@ exports.actualizarProducto = async (req, res) => {
   }
 }
 
+
+
+
 exports.obtenerProducto = async (req, res) => {
   try {
     let producto = await Producto.findById(req.params.id);
